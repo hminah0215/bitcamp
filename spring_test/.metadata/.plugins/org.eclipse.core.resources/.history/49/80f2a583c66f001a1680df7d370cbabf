@@ -1,0 +1,9 @@
+package com.bit.exam01;
+
+public class ProfilingAdvice {
+	
+	public Object pro(proceediongJoinPoint joinponint) {
+		Object re = null;
+		return re;
+	}
+}

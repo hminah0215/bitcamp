@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	.active{background: pink;}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	var arr;
+	
+	function listDept()
+	{
+		$("#deptList").empty();
+		$.getJSON("listDept.do",function(data){
+			arr = data;
+			$.each(data, function(idx, dept){
+				var p = $("<p></p>").html(dept.dno + "/" +dept.dname + "/"+dept.dloc);
+				// 부서 p를 선택하면 텍스트필드에 데이터가 출력되도록
+				$(p).attr("idx",idx);
+				$(p).click(function(){
+					$("p").removeClass("active");
+					$(this).addClass("active");
+					
+					var idx = $(this).attr("idx");
+					$("#dno").val( arr[idx].dno );
+					$("#dname").val( arr[idx].dname );
+					$("#dloc").val( arr[idx].dloc );
+				});
+				
+				$("#deptList").append(p);
+			});
+		});
+	}
+	
+	// 삭제 버튼 이벤트
+	$("#btnDelete").click(function(){
+		var dept = $("#f").serialize();
+		$.ajax("deleteDept.do",{data:dept ,success:function(r){
+			listDept();
+		}});		
+	});
+	
+	// 수정 버튼 이벤트
+	$("#btnUpdate").click(function(){
+		var dept = $("#f").serialize();
+		$.ajax("updateDept.do",{data:dept ,success:function(r){
+			listDept();
+		}});		
+	});
+
+	// 등록 버튼 이벤트
+	$("#btnAdd").click(function(){
+
+		//var dept = {dno:dno,dname:dname,dloc:dloc};
+		
+		var dept = $("#f").serialize();	
+		//serialize는 div같은데 들어가면 안됨, form에서 입력한걸 자바객체로 만든다.
+	
+		$.ajax("insertDept.do",{data:dept ,success:function(r){
+			listDept();
+		}});		
+	});
+	
+	// 부서목록 읽어오기 버튼 이벤트
+	$("#btn").click(function(){
+		listDept();
+	});
+})
+</script>
+</head>
+<body>	
+	<div id="deptList"></div>
+	<button id="btn">부서목록 읽어오기</button>
+	<hr>
+	<form id="f">
+		부서번호 : <input type="text" id="dno" name="dno"><br>
+		부서이름 : <input type="text" id="dname" name="dname"><br>
+		부서위치 : <input type="text" id="dloc" name="dloc"><br>
+	</form>
+	<button id="btnAdd">등록</button>
+	<button id="btnUpdate">수정</button>
+	<button id="btnDelete">삭제</button>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

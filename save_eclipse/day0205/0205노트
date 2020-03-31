@@ -1,0 +1,17 @@
+자바, jsp,서블릿, 데이터베이스, 스프링, html/css/javascript 등 웹프로그래밍 관련하여 도서2권을 선정해주세요.
+목요일까지 정해주세요! 
+==============================================================================================================
+
+c##bit1234 계정에 다음을 실습합니다.
+게시판을 위한 테이블을생성하고, 새로운 게시물을 등록하고 
+모든 게시물의 목록(번호,제목, 작성자)을 출력하는 웹 어플리케이션을 작성해봅니다.
+- 게시물 상세보기에 대한 기능을 추가합니다.
+- 게시물 수정과 삭제에 대한 기능을 추가합니다. 
+
+게시판(게시물번호*, 제목, 작성자, 암호, 조회수, 작성일, 내용, 첨부파일)
+board(no*, title, writer, pwd, hit, regdate, content, fname)
+
+create table board(no number primary key, title varchar2(20), writer varchar2(20),
+					pwd varchar2(20), hit number, regdate date, content varchar2(500), fname varchar2(50));
+					
+

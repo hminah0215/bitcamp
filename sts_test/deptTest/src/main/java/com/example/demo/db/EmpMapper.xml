@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="emp">
+
+	<!-- 사원목록(empview) -->
+	<select id="listEmpView" resultType="empviewvo">
+		select * from empview
+	
+		<if test="keyword != null and keyword != ''">
+    		where ${searchColumn } like '%' ||  #{keyword} || '%'
+  	 	 </if>
+  	  
+  	  	<if test="sortColumn != null">
+  	  		order by ${sortColumn}
+  	 	 </if>
+	</select>
+
+	<!-- 사원등록 -->
+	<insert id="insertEmp">
+		insert into emp values (seq_emp.nextval, #{ename}, #{job}, #{sal}, #{comm},
+		#{mgr}, sysdate, #{dno}, #{email}, #{jumin})
+	</insert>
+
+	<!-- 관리자 목록 -->
+	<select id="managerList" resultType="empvo">
+		select * from emp where job!= '사원'
+	</select>
+
+</mapper>

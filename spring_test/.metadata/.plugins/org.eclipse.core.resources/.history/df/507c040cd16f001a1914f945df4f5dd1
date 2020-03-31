@@ -1,0 +1,50 @@
+package com.bit.exam01;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+
+public class ProfilingAdvice {
+	
+	public void afterThrowing(JoinPoint j) {
+		String methodName = j.getSignature().toShortString();
+		System.out.println(methodName+" 비정상적으로 종료하였습니다.");
+	} 
+	
+//	public void afterReturnning(JoinPoint j) {
+//		String methodName = j.getSignature().toShortString();
+//		System.out.println(methodName+" 정상완료하였습니다.");
+//	}
+	
+	public void after(JoinPoint j) {
+		String methodName = j.getSignature().toShortString();
+		System.out.println(methodName+"가 동작완료한 후 입니다.");
+	}
+	
+	public void before(JoinPoint j) {
+		String methodName = j.getSignature().toLongString();
+		System.out.println(methodName + "타깃이 되는 메소드 실행하기 전입니다.");
+	}
+	
+//	public void before() {
+//		System.out.println("타깃이 되는 메소드 실행하기 전입니다.");
+//	}
+	
+	public Object pro(ProceedingJoinPoint joinPoint) {
+		Object re = null;
+		String methodName = joinPoint.getSignature().toShortString();
+		System.out.println(methodName+" 시작!");
+		long start = System.currentTimeMillis();
+		
+		try {
+			re = joinPoint.proceed();
+			
+		}catch (Throwable e) {
+			System.out.println(e.getMessage());
+		}
+		
+		System.out.println(methodName+" 종료!!");
+		long finish = System.currentTimeMillis();
+		System.out.println("걸린시간: "+(finish-start));
+		return re;
+	}
+}

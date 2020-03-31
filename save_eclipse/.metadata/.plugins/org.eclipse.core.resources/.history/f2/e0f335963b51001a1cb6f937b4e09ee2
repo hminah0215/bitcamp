@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.place{
+		width: 600px;
+		height: 300px;
+		background-color: pink;
+		margin: 10px;
+		
+		font-size: 20px;
+	}
+</style>
+</head>
+<body>
+	<div class="place">(CNN)The US plan to evacuate Americans and their families from the Diamond Princess cruise ship appears, on its face, to be the case of a powerful government coming to the aid of its most vulnerable citizens.
+But the decision has prompted anger from some exhausted passengers, who believe the move could actually set back their ability to return to normal life -- just as that option was within their grasp.
+	</div>
+	
+	<div class="place">On Saturday afternoon, the US Embassy in Tokyo sent a notice to Americans on board the Diamond Princess laying out plans to evacuate nearly 400 Americans back home.
+Once there, another 14 days of mandatory quarantine would begin. Anyone who chose not to get on the flight would have to wait another 14 days in Japan to ensure they were symptom-free before returning to the US.
+That decision has prompted anger among the American passengers, with many demanding answers to two simple questions about the US response: Why did the American government wait so long to make the about-face decision? What prompted such a dramatic shift in US policy?
+	</div>
+	
+	<div class="place">"From tragedy to comedy to farce," tweeted American passenger Matthew Smith, pulling no punches. "The US government instead wants to take us off without testing, fly us back to the US with a bunch of other untested people, and then stick us in 2 more weeks of quarantine? How does that make any sense at all?"
+	</div>
+</body>
+</html>

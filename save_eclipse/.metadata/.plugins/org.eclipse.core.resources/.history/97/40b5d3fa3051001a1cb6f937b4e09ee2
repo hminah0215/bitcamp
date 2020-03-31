@@ -1,0 +1,11 @@
+h2{
+	color: pink;
+}
+
+a{
+	color: fuchsia;
+}
+
+td{
+	color: purple;
+}

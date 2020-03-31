@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="smsSender" class="com.bit.exam04.SMSsender">
+		<constructor-arg value="홍길동"/>
+		<constructor-arg value="이순신"/>
+	</bean>
+	
+	<bean id="sm" class="com.bit.exam04.SystemMonitor">
+		<constructor-arg value="30"/>
+		<constructor-arg ref="smsSender"/>
+	</bean>
+	
+	<!--  메인메소드가 있는 클래스를 작성하여 결과를 확인해봅니다. -->
+</beans>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/colorBox/colorbox.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/colorBox/jquery.colorbox-min.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		$("a").colorbox();
+	});
+</script>
+</head>
+<body>
+	<a href="/img/cloth1.jpg">유니폼1</a>
+	<a href="/img/cloth2.jpg">유니폼2</a>
+	<a href="/img/cloth3.jpg">유니폼3</a>
+	<a href="/img/cloth4.jpg">유니폼4</a>
+	<a href="/img/cloth5.jpg">유니폼5</a>
+</body>
+</html>

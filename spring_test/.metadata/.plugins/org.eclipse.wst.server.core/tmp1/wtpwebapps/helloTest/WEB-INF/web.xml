@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>helloTest</display-name>
+  
+  <!-- '어플리케이션에서 이 xml을 사용할것입니다' 라고까지만 한것. 
+  		서블릿 이름과 서블릿클래스를 원함. 
+  		서블릿클래스 이름은 기니까 start.jsp 파일생성, 스크립트릿 열고 dispatcherServlet을 입력해서 import된것을
+  		복사해서 붙여쓰기. 
+  -->
+  <servlet>
+  	<servlet-name>bit</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  </servlet> 
+
+ <!-- 사용선언 후 디스패쳐 동작을 위한 맵핑설정  
+ 		서블릿네임과, 어떤요청일때 동작하게 할지를 정하는  url-mapping.
+ 		"*.do" 일때는 경로 / 이런거 안써도 됨. 
+ 		서블릿이름대로 xml파일을 생성해야한다. bit-servlet.xml 
+ --> 
+ <servlet-mapping>
+ 	<servlet-name>bit</servlet-name>
+ 	<url-pattern>*.do</url-pattern>
+ </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

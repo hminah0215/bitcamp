@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods">
+
+	<!-- 페이징처리 -->
+	<select id="totalRecord" resultType="java.lang.Integer">
+		select count(*) from goods
+	</select>
+
+
+	<!-- 상품목록 -->
+	<select id="selectAll" resultType="goodsvo">
+		select no, item, price, qty, fname, detail
+			from (select rownum n, no, item, price, qty, fname, detail
+				from (select *
+					from goods order by no desc))	
+		where n between #{start} and #{end}
+		
+		<if test="keyword != null and keyword != ''">
+			where ${searchColumn } like '%' || #{keyword} || '%'
+		</if>
+
+		<if test="sortColumn != null">
+			order by ${sortColumn}
+		</if>
+	</select>
+
+	<!-- 상품등록 -->
+	<insert id="insert">
+		insert into goods values(seq_goods.nextval, #{item}, #{price}, #{qty},
+		#{fname}, #{detail})
+	</insert>
+
+	<!-- 상품 상세보기 -->
+	<select id="detail" resultType="goodsvo">
+		select * from goods where no = #{no}
+	</select>
+
+	<!-- 상품 수정 -->
+	<update id="update">
+		update goods set item=#{item}, price=#{price}, qty=#{qty}, fname=#{fname}, detail=#{detail} 
+			where no= #{no}
+	</update>
+
+	<!-- 상품 삭제 -->
+	<delete id="delete">
+		delete goods where no=#{no}
+	</delete>
+</mapper>

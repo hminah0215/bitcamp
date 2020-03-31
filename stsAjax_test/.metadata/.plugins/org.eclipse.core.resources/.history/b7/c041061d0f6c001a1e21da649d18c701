@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="j">
+   
+   <!-- 주식 전체 리스트 -->
+  <select id="selectAll" resultType="jlistVo">
+    select * from jlist
+  </select>
+  
+    <!-- 구매 주식 리스트 -->
+    <!-- group로 묶어서 같은 종목의 총 수량, 총 가격을 구함 -->
+  <select id="selectM" resultType="mlistVo">
+    select j_name, sum(qty) qty, sum(tot) tot from mlist group by j_name
+  </select>  
+  
+     <!-- 주식 구매 -->
+  <insert id="insert">
+     insert into mlist values(#{j_name},#{qty},#{tot})
+  </insert>
+  
+     <!-- 주식 판매 -->
+   <delete id="delete">
+      delete mlist where j_name = #{j_name}
+   </delete>
+
+</mapper>

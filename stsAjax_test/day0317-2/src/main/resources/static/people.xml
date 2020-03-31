@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+	<person>
+		<name>홍길동</name>
+		<gender>남자</gender>
+		<part>기타</part>
+	</person>
+	<person>
+		<name>유관순</name>
+		<gender>여자</gender>
+		<part>기타</part>
+	</person>	
+</people>

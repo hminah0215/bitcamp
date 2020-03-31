@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/jqgrid/css/ui.jqgrid.css">
+<link rel="stylesheet" href="/jquery-ui/jquery-ui.min.css">
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/jqgrid/js/i18n/grid.locale-en.js"></script>
+<script type="text/javascript" src="/jqgrid/js/jquery.jqGrid.min.js"></script>
+<script type="text/javascript" src="/jquery-ui/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		$("#grid").jqGrid({
+			url:"../getBooks",
+			editurl:"/updateBook",
+			pager:"#pager",
+			rowNum:10,
+			rowList:[5,10,15],
+			colNames:["bookid","bookname","publisher","price"],
+			colModel:[
+				{name:"bookid",index:"bookid",width:50, editable:true},
+				{name:"bookname",index:"bookname",width:200, editable:true},
+				{name:"publisher",index:"publisher",width:200, editable:true},
+				{name:"price",index:"price",width:100, editable:true}
+			]
+		}).navGrid("#pager",{search:true, edit:true, add:true, del:true});
+	});
+	
+
+</script>
+
+</head>
+<body>
+	<table id="grid"></table>
+	<div id="pager"></div>
+	
+</body>
+</html>

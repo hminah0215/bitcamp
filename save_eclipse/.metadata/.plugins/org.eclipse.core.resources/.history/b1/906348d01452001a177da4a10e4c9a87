@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#ball{
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		
+		
+		animation-name: changeWidth;
+		animation-duration: 3s;
+		animation-timing-function: ease;
+		animation-iteration-count: 10;
+		animation-direction: nomal;
+		animation-delay: 2s;
+	}
+	
+	@keyframes changeWidth{
+		0% {left: 0%}
+		20%	{transform: rotate(20deg)}
+		40%	{transform: rotate(40deg)}
+		60%	{transform: rotate(60deg)}
+		80%	{transform: rotate(80deg)}
+		100% {transform: rotate(100deg)}
+	}
+	
+</style>
+</head>
+<body>
+	<img id="ball" src="ball1.jpg">
+</body>
+</html>

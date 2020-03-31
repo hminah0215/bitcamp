@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;exam/src/main/java/com.example.demo.db&apos;&#x0D;&#x0A;- Original project: &apos;customer&apos;&#x0D;&#x0A;- Destination element: &apos;exam/src/main/java/com.example.demo.db&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     sqlConfig.xml&#x0D;&#x0A;     CustomerMapper.xml" description="Copy files" destination="=exam/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.example.demo.db" element1="src/main/java/com/example/demo/db/sqlConfig.xml" element2="src/main/java/com/example/demo/db/CustomerMapper.xml" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1584423735229" units="0" version="1.0"/>
+</session>

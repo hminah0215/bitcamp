@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="SMSsender" class="com.bit.exam05.SMSsender">
+		<property name="from" value="홍길동"/>
+		<property name="to" value="이순신"/>
+	</bean>
+</beans>

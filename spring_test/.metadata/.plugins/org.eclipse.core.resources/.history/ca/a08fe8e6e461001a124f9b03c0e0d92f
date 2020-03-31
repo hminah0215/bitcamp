@@ -1,0 +1,34 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function(){
+		//객체를 가지고있는 배열, 자바스크립트 표현에서의 객체는 {속성명: 벨류} 
+		var arr = [  
+			{name: "축구공",fname: "ball2.jpg"},
+			{name: "유니폼",fname: "cloth1.jpg"},
+			{name: "축구화",fname: "shoe5.jpg"},
+			{name: "스타킹",fname: "stock3.jpg"}  ];
+		
+		document.getElementById("btnRead").onclick = function(){
+			for(var i = 0; i<arr.length; i++){
+				var g = arr[i];
+				var txtNode = document.createTextNode( g.name );
+				var li = document.createElement("li");
+				li.appendChild(txtNode);
+				document.getElementById("list").appendChild(li)
+			}
+		}
+		
+	}
+</script>
+</head>
+<body>
+	<ul id="list"></ul>
+	<button id="btnRead">상품 읽어오기</button>
+</body>
+</html>

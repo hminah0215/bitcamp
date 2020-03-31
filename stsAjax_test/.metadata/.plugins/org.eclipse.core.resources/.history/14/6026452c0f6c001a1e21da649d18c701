@@ -1,0 +1,64 @@
+package com.example.demo.db;
+
+import java.io.Reader;
+import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.example.demo.vo.MyStockVo;
+import com.example.demo.vo.StockVo;
+
+public class StockManager {
+	private static SqlSessionFactory factory;
+
+	static {
+		try {
+			Reader reader = Resources.getResourceAsReader("com/example/demo/db/sqlConfig.xml");
+			factory = new SqlSessionFactoryBuilder().build(reader);
+			reader.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	public static List<StockVo> listAll() {
+		SqlSession session = factory.openSession();
+		List<StockVo> list = session.selectList("stock.selectAll");
+		session.close();
+		return list;
+	}
+
+	public static int insert(MyStockVo my) {
+		SqlSession session = factory.openSession();
+		int re = session.insert("stock.insert", my);
+		session.commit();
+		session.close();
+		return re;
+	}
+
+	public static int update(MyStockVo my) {
+		SqlSession session = factory.openSession();
+		int re = session.update("stock.update", my);
+		session.commit();
+		session.close();
+		return re;
+	}
+	
+	public static int cntup(MyStockVo my) {
+		SqlSession session = factory.openSession();
+		int re = session.selectOne("stock.cntup", my);
+		session.close();
+		return re;
+	}
+	
+	public static List<MyStockVo> listMy() {
+		SqlSession session = factory.openSession();
+		List<MyStockVo> list = session.selectList("stock.selectMy");
+		session.close();
+		return list;
+	}
+
+}

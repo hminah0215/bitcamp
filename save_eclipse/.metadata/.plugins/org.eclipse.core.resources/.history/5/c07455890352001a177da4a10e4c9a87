@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#img1{transform: rotate(45deg);}
+	#img2{transform: scal(5,5);}
+</style>
+</head>
+<body>
+	<img id="img1" src="cloth1.jpg">
+	<img id="img2" src="cloth2.jpg">
+	
+</body>
+</html>

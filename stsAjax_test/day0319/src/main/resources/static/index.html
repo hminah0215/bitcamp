@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#list{width: 50px; height: 1000px;}
+	#detail{
+		position: absolute;
+		left: -3000;
+		top: -3000;
+		
+		width: 600px;
+		height: 400px;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//환율
+		$.ajax("rate.do",{success:function(data){
+			$("#rate").html(data);
+		}});
+		
+		//금시세
+		$.ajax("gold.do",{success:function(data){
+			$("#gold").html(data);
+		}});
+		
+		//각 도시의 이름을 누르면 그 지역의 날씨정보가 뜨도록 작성
+		var arr;
+		$.ajax("getkma",{success:function(data){
+			arr = $(data).find("location");
+			$.each(arr, function(idx, location){
+				var city =$("<li></li>").html( $(this).find("city").text() ).attr("idx",idx);
+				$("#list").append(city);
+				
+				//도시 클릭 이벤트
+				$(city).click(function(){
+					$("#detail").empty();
+					
+					var x = event.pageX +20;
+					var y = event.pageY;//눌러진 마우스의 위치
+					$("#detail").css({left:x+"px", top:y+"px"});
+				
+					//눌러진 city(this) 에서 idx를 가져온다.
+					var loc = arr[$(this).attr("idx")];
+					var dataArr = $(loc).find("data");
+					//
+					$.each(dataArr, function(idx, data){
+						var p = $("<p></p>");
+						//tmEf는 요일  wf는 흐림,맑음 tmn최저기온 tmx 최고기온 rnSt 강수확률
+						var date =$("<span></span>").html("날짜:"+ $(data).find("tmEf").text()+"<br>" );
+						var wf =$("<span></span>").html("날씨:"+ $(data).find("wf").text()+"/ " );
+						var tmn =$("<span></span>").html("최저온도:"+ $(data).find("tmn").text()+"도/ " );
+						var tmx =$("<span></span>").html("최고온도:"+ $(data).find("tmx").text()+"도/ " );
+						var rnSt =$("<span></span>").html("강수확률:"+ $(data).find("rnSt").text()+"% " );
+						$(p).append(date,wf,tmn,tmx,rnSt);
+						$("#detail").append(p);
+					});
+					
+				});
+			});
+		}});
+	});
+</script>
+</head>
+<body>
+	오늘의 환율 : <span id="rate"></span><br>
+	오늘의 금시세 : <span id="gold"></span>
+	<hr>
+	
+	<h2>지역별 날씨 정보</h2>
+	<hr>
+	<ul id="list"></ul>
+	<div id="detail"></div>
+</body>
+</html>

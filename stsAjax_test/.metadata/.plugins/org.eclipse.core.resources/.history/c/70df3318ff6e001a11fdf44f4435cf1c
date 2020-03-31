@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+   content="width=device-width,initial-scale=1.0,
+   maximum-scale=1.0,minimum-scale=1.0,
+   user-scaleable=no"/>
+   
+<link rel="shortcut icon" href="/img/icon.png"/>
+<link rel="apple-touch-icon" href="/img/icon.png"/>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript">
+   $(function(){
+     $.getJSON("/goodsList",function(data){
+    	 arr = data;
+    	 $.each(arr,function(idx,g){
+    		if(idx>0){
+	    		var page = $("<div data-role='page' class='page'></div>").attr("id",idx);
+	    		var header = $("<div data-role='header'><h2>상품목록</h2></div>");
+	    		var content = $("<div data-role='content'></div>");
+	    		var footer = $("<div data-role='footer' data-position='fixed'><h2>비트몰</h2></div>");
+	    		
+	    		var img = $("<img>").attr({"src":"/img/"+g.fname, "width":100, "height":100});
+	    		var name = $("<p></p>").html(g.item);    		
+	    		var price = $("<p></p>").html(g.price);    		
+	    		var detail = $("<p></p>").html(g.detail);  
+	    		
+	    		$(content).append(img,name,price,detail);
+	    		$(page).append(header,content,footer);
+	    		$("body").append(page);
+    		}else{
+
+	    		var img = $("<img>").attr({"src":"/img/"+g.fname, "width":100, "height":100});
+	    		var name = $("<p></p>").html(g.item);    		
+	    		var price = $("<p></p>").html(g.price);    		
+	    		var detail = $("<p></p>").html(g.detail);  
+	    		
+	    		$("#startNode").append(img,name,price,detail);
+    		}
+         	$(".page").bind("swipeleft",function(){
+        	 	var id = eval($(this).attr("id"))+1;
+        	 	console.log(id);
+        	 	var nextPage = "#"+id;
+        	 	$.mobile.changePage(nextPage,{transition:"slide"});
+        	 })
+    	 });
+    	 $(".page").bind("swipeleft",function(){
+     	 	var id = eval($(this).attr("id"))+1;
+     	 	console.log(id);
+     	 	var nextPage = "#"+id;
+     	 	$.mobile.changePage(nextPage,{transition:"slide"});
+     	 })
+     	 
+     	 $(".page").bind("swiperight",function(){
+     	 	var id = eval($(this).attr("id"))+1;
+     	 	console.log(id);
+     	 	var nextPage = "#"+id;
+     	 	$.mobile.changePage(nextPage,{transition:"slide"});
+     	 })
+     });
+   });
+</script>
+</head>
+<body>
+   <div data-role="page" id="0" class="page">
+   	<div data-role="header"><h1>상품목록</h1></div>
+   	
+   	<div data-role="content" id="startNode">
+   	</div>
+   	
+   	<div data-role="footer" data-position="fixed">비트몰</div>
+   </div>
+</body>
+</html>

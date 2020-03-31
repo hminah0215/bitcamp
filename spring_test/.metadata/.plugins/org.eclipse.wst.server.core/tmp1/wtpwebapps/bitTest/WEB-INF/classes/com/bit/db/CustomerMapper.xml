@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 마이바티스 사이트에서 Exploring Mapped SQL Statements  복붙후 고치기 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 접근할 이름 -->
+<mapper namespace="customer">	
+
+	<!-- result type에 애칭을 줄수있음, sqlMapConfig 파일 안에 typeAliases로..!  
+		쿼리끝에 세미콜론 안된다!!!!  -->
+  <select id="selectAll" resultType="customervo">
+    select * from customer 
+      <if test="keyword != null and keyword != ''">
+    	where ${searchColumn } like '%' ||  #{keyword} || '%'
+  	  </if>
+  	  
+  	  <if test="sortColumn != null">
+  	  	order by ${sortColumn}
+  	  </if>
+  </select>
+  
+  <!-- where custid=? 하면 안돼고 custid = #{custid} 라고해야함 -->
+  <select id="selectCustomer" resultType="customervo">
+  	select * from customer where custid = #{custid}
+  </select>
+  
+  <!-- insert -->
+  <insert id="insert" parameterType="customervo">
+ 	 insert into customer values (#{custid},#{name},#{address},#{phone})
+  </insert>
+  
+  <!-- update -->
+  <update id="update" parameterType="customervo">
+	  update customer set name = #{name}, address = #{address}, phone = #{phone}
+	  where custid = #{custid}
+  </update>
+  
+  <!-- delete -->
+  <delete id="delete">
+  	delete from customer where custid = #{custid}
+  </delete>
+  
+</mapper>

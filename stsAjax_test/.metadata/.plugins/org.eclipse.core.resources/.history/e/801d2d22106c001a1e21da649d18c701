@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+   //body가 만들어진후에 동작
+   $(function(){
+      
+      //클릭한것을 알기위한 순번 설정 변수 선언
+      var idx;
+      
+      //mlist에 insert를 위한 serialize() 결과를 담을 변수
+      var d;
+      
+      //주식 목록은 계속 보여야해서 항상 호출되게함
+      JAll();
+      
+      //구매한 종목은 계속 보여야해서 항상 호출되게함
+      MAll();
+      
+      //구매한 종목을 보여주는 메소드
+      function MAll(){
+         //컨트롤러에 있는 listMAll를 호출해서 결과를 data에 담음
+         $.getJSON("listMy",function(data){
+            //기존에 있던 리스트를 제거함
+            //리스트라서 *를 붙여서 전부 지워야함
+            $("*#mltr").remove();
+            //data에 들어있는 것들에 idx로 순번을 부여하여 i에 넣음
+            $.each(data,function(idx,i){
+               idx=idx;
+               
+               //data만큼 루프를 돌면서 td를 생성하여 종목명, 수량, 총 금액을 설정함
+               var mltd1 = $("<td></td>").html(i.j_name);
+               var mltd2 = $("<td></td>").html(i.qty);
+               var mltd3 = $("<td></td>").html(i.tot);
+               //매도를 위해 버튼에 id를 s로 설정해서 생성함
+               var mltd4 = $("<button id='s'></button>").html("매도");
+               //어떤것을 삭제할지 알기위해 idx설정
+               mltd4.attr("idx",idx);
+               
+               
+               //tr을 생성하여 위에서 생성한 td들을 추가함
+               //기존에 있던 리스트를 삭제하기위해 id를 mltr로 설정함
+               var mltr = $("<tr id='mltr'></tr>").append(mltd1,mltd2,mltd3,mltd4);
+               
+               //id가 mlist인것에 tr을 추가함 
+               $("#mlist").append(mltr);
+               });
+               
+               //매도버튼(s)을 누르면
+               //버튼에 id가 전부 s라서 * 붙임
+               //on을 해야 나중에 생성된 노드에도 클릭 이벤트 적용
+               $("*#s").on("click",function(){
+                  //클릭한것의 idx를 가져옴
+                  var sidx=$(this).attr("idx");
+                  //값 전달을 위해 form에 hidden으로 생성한 input값에 종목명 설정
+                  var sdata = $("#b_name").val( data[sidx].j_name );
+                  
+                  //데이터 전달을 위한 형식으로 변환
+                  d = $("#f1").serialize();
+                  
+                  //ajax 통신으로 data d를 delete로 보내기를 성공하면
+                  $.ajax("delete",{data:d, success:function(){
+                     //구매한 목록 호출
+                     MAll();
+                  }})
+               });
+         });
+      }
+      
+      //주식 목록은 계속 보여줘야해서 따로 메소드로 만듦
+      function JAll(){
+         //컨트롤러에 있는 listJAll를 호출해서 결과를 data에 담음
+         $.getJSON("listAll",function(data){
+                     
+            //data에 들어있는것들에 idx로 순번을 먹여서 i에 담음
+            $.each(data,function(idx,i){
+               //idx에 순번을 넣음
+               idx = idx;
+               
+               //data만큼 루프를 돌면서 td를 만들고 주식이름(j_name)을 셋팅함
+               var ltd1 = $("<td></td>").html(i.s_name);//종목명
+               //data만큼 루프를 돌면서 td를 만들고 현재가격(now_price)을 셋팅함
+               var ltd2 = $("<td></td>").html(i.now_price);//현재가
+               
+               //주식 항목을 담을 tr생성하고 td1,td2를 추가함
+               var ltr = $("<tr></tr>").append(ltd1,ltd2);
+               
+               //id가 list인것에 ltr을 추가함
+               var list = $("#list").append(ltr);
+               
+               //종목(ltd1)을 누르면
+               $(ltd1).click(function(){
+                  //기존에 보여주고있던 리스트를 제거함
+                  $("#ptr").remove();
+                  
+                  //td를 생성하고 클릭한 종목의 현재가, 상한가, 하한가, 매수버튼을 셋팅함
+                  var ptd1 = $("<td></td>").html(data[idx].now_price);
+                  var ptd2 = $("<td></td>").html(data[idx].up_price);
+                  var ptd3 = $("<td></td>").html(data[idx].down_price);
+                  //매수버튼을 누르면 이벤트를 걸기위해 id를 b로 설정
+                  var ptd4 = $("<button id='b'></button>").text("매수");
+                  
+                  //기존에 보여주고있던 리스트를 제거하기위해 id ptr로 설정해서 tr을 생성후
+                  //위에서 생성한 td들을 추가함
+                  var ptr = $("<tr id='ptr'></tr>").append(ptd1,ptd2,ptd3,ptd4)
+                  
+                  //id가 price인것에 ptr을 추가함
+                  $("#price").append(ptr);
+                  
+                  //매수버튼(b)를 누르면
+                  $("#b").click(function(){
+                     //기존에 추가했던 종목정보 삭제
+                     $("#btr").remove();
+                     
+                     //매수를 위한 노드들 생성
+                     //매수하면 mlist에 insert를 위해 id값을 지정해서 생성함
+                     var bname = $("<td id='bname'></td>").html(data[idx].s_name);
+                     //수량은 입력값을 받기위해 input
+                     var bqty = $("<input type=number id='bqty'>");
+                     var bnowPrice = $("<td id='bnowPrice'></td>").html(data[idx].now_price);
+                     var btot = $("<td id='btot'></td>");
+                     
+                     
+                     //계산(cal)버튼을 누르면
+                     $("#cal").click(function(){
+                        //input의 값을 가져오려면 val()을 써야함
+                        //btot에 수량과 현재가를 곱한후 셋팅함
+                        btot.html(bqty.val() * bnowPrice.html());
+                        
+                        //값 전달을 위해 form에 hidden으로 생성한 input값에 종목명, 수량, 금액 설정
+                        $("#j_name").val( $("#bname").html() );
+                        $("#qty").val( $("#bqty").val() );
+                        $("#tot").val( $("#btot").html() );
+                     });
+                     
+                     //기존에 보여지고있던 종목을 지우기위해 id를 btr로 설정후 생성
+                     //위의 결과물을 tr에 추가함
+                     var btr = $("<tr id='btr'></tr>").append(bname,bqty,bnowPrice,btot);
+                     
+                     //id가 buy인것에 btr을 추가함
+                     $("#buy").append(btr);
+                     
+                  })
+                  
+                  //for문안에 있어서 off를 안하면 매수가 여러번 실행됨
+                  $("#bb").off("click");
+                  
+                  //on을 해야 나중에 생성된 노드에도 클릭 이벤트 적용
+                  //매수 버튼은 1개만 있어서 *안붙여도됨
+                  //매수버튼(bb)를 누르면
+                  $("#bb").on("click",function(){
+                     //buy테이블에서 form안에 hiden으로 담아둔 값을
+                     //insert로 보낼수있는 형태로 변환
+                     d = $("#f").serialize();
+                     
+                     //ajax통신으로 data에 들어있는 d를 insert에 성공적으로 보내면
+                     $.ajax("insert",{data:d,success:function(){
+                        //매수에 성공하면 구매한 종목을 다시 호출함
+                        MAll();
+                     }})
+                  });
+               });
+            });
+         });
+      }
+   });
+</script>
+</head>
+<body>
+<h2>주식 거래</h2>
+<hr>
+
+<h4>구매가능한 주식 목록</h4>
+<table id="list" border="1">
+   <tr>
+      <th>종목명</th>
+      <th>현재가</th>
+   </tr>
+</table>
+<br>
+
+<h4>주식 가격</h4>
+<table id="price" border="1">
+   <tr>
+      <th>현재가</th>
+      <th>상한가</th>
+      <th>하한가</th>
+      <th>기능</th>
+   </tr>
+</table>
+<br>
+
+<h4>주식 구매하기</h4>
+<!-- serialize()를 하려면 form안에 넣어야함 -->
+<form id="f">
+   <table id="buy" border="1">
+      <tr>
+         <th>종목</th>
+         <th>수량</th>
+         <th>단가</th>
+         <th>금액</th>
+      </tr>
+   </table>
+   <!-- 값을 전달하기위해 hidden으로 값을 가지고만있고 보여주지는 않음 -->
+   <input type="hidden" id="s_name" name="s_name"> <!-- 종목명 -->
+   <input type="hidden" id="s_qty" name="s_qty"> <!-- 수량 -->
+   <input type="hidden" id="s_tot" name="s_tot"> <!-- 금액 -->
+</form>
+   <button id="bb">매수</button>
+   <button id="cal">계산</button>
+   <br><br>
+
+<h4>보유 주식</h4>
+<form id="f1">
+   <table id="mlist" border="1">
+      <tr>
+         <th>보유주</th>
+         <th>보유수량</th>
+         <th>총가격</th>
+         <th>매도</th>
+      </tr>
+   </table>
+   <input type="hidden" id="s_name" name="s_name">
+</form>   
+<br>
+
+
+</body>
+</html>

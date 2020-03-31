@@ -1,0 +1,95 @@
+package com.bit.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class insertMemberServlet
+ */
+@WebServlet("/insertMember.do")
+public class insertMemberServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public insertMemberServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=UTF-8");	//한글설정
+
+		PrintWriter out = response.getWriter();
+		String str ="<html>";
+		str +="<form method='post' action='insertMemberOK.do'>";
+	
+		str += "아이디 : ";
+		str += "<input type='text' name='id'><br>";
+		
+		str += "비밀번호: ";
+		str += "<input type='password' name='pwd'><br>";
+		
+		str += "이름: ";
+		str += "<input type='text' name='name'><br>";
+		
+		
+		str += "연락처: ";
+		str += "<input type='tel' name='tel' "
+				+ "pattern='[0-9]{3}-[0-9]{4}-[0-9]{4}' placeholder='010-1234-5678'><br>";
+		
+		str += "생일 :";
+		str += "<input type='date' name='birth'><br>";
+		
+		str += "이메일: ";
+		str += "<input type='text' name='email'><br>";
+		
+		str += "성별: ";
+		str += "<input type='text' name='gender'><br>";
+		
+		str += "혈액형: ";
+		str += "<input type='text' name='blood'><br>";
+		
+		str += "취미: ";
+		str += "<input type='text' name='hobby'><br>";
+		
+		str += "URL: ";
+		str += "<input type='text' name='url'><br>";
+		
+		str += "직업: ";
+		str += "<input type='text' name='job'><br>";
+		
+		str += "소개:<br> ";
+		str += "<textarea name='intro'></textarea><br>";
+		
+		str += "<input type='submit' value='등록'>";
+		str += "<input type='reset' value='취소'>";
+		
+		str +="</form>";
+		str += "</html>";
+		out.print(str);
+		out.close();
+		
+	}
+	
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+ <!-- isErrorPage="true"라고하면 내장객체로 exception을 사용할 수 있다. -->
+ <%@page isErrorPage="true" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	다음과 같은 문제가 발생하였습니다. 
+	<%=exception.getMessage() %>
+</body>
+</html>

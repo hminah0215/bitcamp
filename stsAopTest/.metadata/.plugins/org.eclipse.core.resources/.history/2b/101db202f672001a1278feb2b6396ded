@@ -1,0 +1,23 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class BoardController {
+	
+	@GetMapping("/insertBoard")
+	public String insertBoard() {
+		String str ="";
+		
+		return str;
+	}
+	
+	@PostMapping("/insertBoard")
+	public String insertBoardOk() {
+		String str ="";
+		
+		return str;
+	}
+}

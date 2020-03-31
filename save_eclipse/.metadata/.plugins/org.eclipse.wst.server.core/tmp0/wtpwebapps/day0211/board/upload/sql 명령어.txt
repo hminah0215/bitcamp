@@ -1,0 +1,21 @@
+1. SQL LIKE 연산자
+
+LIKE연산자는 WHERE절에서 컬럼값을 검색(패턴을 사용하여 검색)하는데 사용된다.
+
+where like 조건문
+
+where name = '최영수'
+=>  name이 최영수 인것만 나옴
+
+where name like '%최영수%'
+=> name이 최영수 앞,뒤에 문자가 있어도 나옴
+
+
+2. 테이블 복사
+
+create table book10 as select * from book;
+
+3. where절에서 null 찾을때
+= 쓰면 안됨
+is null으로 써야됨
+not null으로 써야됨

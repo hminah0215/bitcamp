@@ -1,0 +1,28 @@
+package com.bit.exam01;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.bit.dao.GoodsDao;
+import com.bit.dao.MemberDao;
+
+//beans.xml을 대신하는 클래스
+@Configuration
+public class SpringConfig {
+	
+	@Bean
+	public ProfilingAdviceAspect advice() {
+		return new ProfilingAdviceAspect();
+	} 
+	
+	@Bean
+	public MemberDao mdao() {
+		return new MemberDao();
+	}
+	@Bean
+	public GoodsDao gdao() {
+		return new GoodsDao();
+	}
+
+	
+}

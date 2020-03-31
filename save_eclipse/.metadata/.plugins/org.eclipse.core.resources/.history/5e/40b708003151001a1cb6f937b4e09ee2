@@ -1,0 +1,17 @@
+h2{
+	color: pink;
+}
+
+a{
+	color: fuchsia;
+}
+
+td{
+	color: purple;
+}
+
+table{
+	background: orange;
+	display: inline-block;
+	border: 2px solid green;
+}

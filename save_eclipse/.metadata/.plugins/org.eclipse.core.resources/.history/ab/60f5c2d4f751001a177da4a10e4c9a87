@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#one{width: 100px; height: 100px; background: coral; z-index: 1;
+		 position: absolute; }
+	#two{width: 100px; height: 100px; background: skyblue; z-index: 3;
+		 position: absolute; left: 70px; top: 70px;}
+	#three{width: 100px; height: 100px; background: purple; z-index: 1;
+		   position: absolute; left: 120px; top: 120px;}
+
+</style>
+</head>
+<body>
+	<div id="one"></div>
+	<div id="two"></div>
+	<div id="three"></div>
+</body>
+</html>

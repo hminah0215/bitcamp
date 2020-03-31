@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+<script type="text/javascript" src="">
+	$(function(){
+		
+	});
+</script>
+</head>
+<body>
+	<div id="list">
+		<div class="item small"></div>
+		<div class="item big"></div>
+		<div class="item normal"></div>
+		<div class="item small"></div>
+		<div class="item small"></div>
+		<div class="item small"></div>
+		<div class="item normal"></div>
+		<div class="item normal"></div>
+		<div class="item small"></div>
+		<div class="item small"></div>
+		<div class="item small"></div>
+	</div>
+</body>
+</html>

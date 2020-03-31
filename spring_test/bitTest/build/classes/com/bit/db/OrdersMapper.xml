@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orders">
+	
+	<!-- 주문등록 -->
+	<insert id="insert">
+		insert into orders values(seq_orders.nextval, #{custid}, #{bookid}, #{saleprice}, sysdate)
+	</insert>
+	
+	
+</mapper>

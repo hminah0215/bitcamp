@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$.ajax("getkma",{success:function(data){
+			
+			//각 지역별 날씨정보를 출력하도록 스크립트를 완성해봅니다.
+			$(data).find('location').each(function(){
+                  var city = $(this).find('city').text();
+                  if(true){
+                    $('body').append(city + '<br>');
+                    $(this).find('data').each(function(){
+                   //tmEf는 요일  wf는 흐림,맑음 tmn최저기온 tmx 최고기온 rnSt 강수확률
+                    var output = $(this).find('tmEf').text() + " " + $(this).find('wf').text() + " " 
+                   				+ $(this).find('tmn').text() + "도 " + $(this).find('tmx').text() + "도 " 
+                   				+ $(this).find('rnSt').text()+"% ";
+
+                    $('body').append(output + '<br>');
+                })
+              }
+           })
+		}});
+	});
+</script>
+</head>
+<body>
+	<h2>날씨 정보</h2>
+	<hr>
+</body>
+</html>

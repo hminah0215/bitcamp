@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		1998년 3월 24일 SM엔터테인먼트 소속으로 데뷔한 대한민국의 6인조 보이그룹이다. 
+		그룹명은 신화(Mythology)에서 유래되었다.
+		1998년 SM엔터테인먼트에서 데뷔하였고, 2004년 굿엔터테인먼트로 이적하였다가 
+		2011년 본인들이 직접 신화컴퍼니를 설립하였다. 
+		데뷔 이후 지금까지 단 한 번도 그룹의 해체나 멤버의 탈퇴 및 교체가 없었던 
+		국내 최장수 아이돌 그룹. 
+		2017년 기준으로 13장의 정규앨범과 7장의 비정규앨범을 발표하여 
+		대한민국 댄스 그룹 최다 정규앨범 발매 기록을 수립하였다.
+	</div>
+</body>
+</html>

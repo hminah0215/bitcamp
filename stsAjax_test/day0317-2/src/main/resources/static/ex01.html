@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn").click(function(){
+		var obj = {name:'lee', age:20};
+		$.ajax({url:"insert.do",data:obj, success:function(r){
+			alert(r);
+		}});
+	});
+})
+</script>
+</head>
+<body>	
+	수신된 메세지:
+	<h2 id="msg"></h2>
+	<button id="btn">Ajax통신</button>
+</body>
+</html>
+
+
+
+

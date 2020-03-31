@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dept">
+  
+  <delete id="delete">
+  	delete dept where dno=#{dno}
+  </delete>
+  
+  <update id="update">
+  	update dept set dname =#{dname}, dloc=#{dloc} where dno=#{dno}
+  </update>
+  
+  <insert id="insert">
+  	insert into dept values(#{dno},#{dname},#{dloc})
+  </insert>
+  
+  <select id="selectAll" resultType="DeptVo">
+    select * from dept order by dno
+  </select>
+  
+</mapper>

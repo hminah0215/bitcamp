@@ -1,0 +1,17 @@
+h2{
+	color: pink;
+	font-family: 궁서
+}
+
+a{
+	color: fuchsia;
+}
+
+td{
+	color: purple;
+}
+
+body{
+	background: silver;
+	border: 2px solid fuchsia;
+}

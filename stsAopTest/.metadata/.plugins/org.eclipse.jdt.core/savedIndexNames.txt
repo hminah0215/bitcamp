@@ -1,0 +1,9 @@
+INDEX VERSION 1.131+C:\_Study\stsAopTest\.metadata\.plugins\org.eclipse.jdt.core
+3992786045.index
+3810764606.index
+3264586481.index
+4079546886.index
+730659235.index
+4289395998.index
+3432377357.index
+3899627406.index

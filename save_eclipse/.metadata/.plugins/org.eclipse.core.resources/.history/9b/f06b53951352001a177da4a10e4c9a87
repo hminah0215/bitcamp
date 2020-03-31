@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	#ball{
+		width: 100px;
+		height: 100px;
+	}
+</style>
+</head>
+<body>
+	<img id="ball" src="ball1.jpg">
+</body>
+</html>

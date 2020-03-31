@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.place{
+		width: 300px;
+		height: 500px;
+		background-color: yellow;
+	}
+</style>
+</head>
+<body>
+	<div class="place"></div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.active{background: skyblue;}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var arr;	//ajax 통신에서 오는 결과를 담아둘 전역변수
+		var inputArr = $("input[type=text]");
+		
+		//삭제
+		$("#btnDelete").click(function(){
+			var book = $("#f").serialize();
+			$.ajax("deleteBook",{data:book, success:function(){
+				listBook();
+			}});
+		});
+		
+		//수정
+		$("#btnUpdate").click(function(){
+			var book = $("#f").serialize();
+			$.ajax("updateBook",{data:book, success:function(){
+				listBook();
+			}});
+		});
+		
+		//등록
+		$("#btnAdd").click(function(){
+			var book = $("#f").serialize();	//객체화
+			$.ajax("insertBook",{ data:book, success:function(r){
+				listBook();
+			}});
+		});
+
+		//도서목록을 보여달라는 ajax기능이 등록,수정,삭제 다 필요하니 메소드로 만들어두기
+		function listBook(){
+			//$("#tb").empty; //그냥 이렇게하면 테이블헤드가 사라짐 
+			$("#tb").html("<tr><th>도서번호</th><th>도서명</th><th>출판사</th><th>가격</th></tr>");
+			
+			$.getJSON("listBook.do",function(data){
+				arr = data;	//응답한 데이터를 arr에 넣는다
+			
+				$.each(data, function(idx,b){
+					var tr = $("<tr></tr>").attr("idx",idx);
+					
+					//수정삭제를 위해 tr에 이벤트를 걸어서 선택된 tr의 내용을 텍스트필드에 뿌리기
+					$(tr).click(function(){
+						$("tr").removeClass("active");
+						$(this).addClass("active");
+						
+						var idx = $(this).attr("idx");	//선택된 tr의 인덱스
+						var book = arr[idx];	//선택된 tr의 실제 내용 
+						var i = 0;
+						$.each(book, function(key, value){
+						
+							$(inputArr[i++]).val(value);
+						});
+					});
+					
+					
+					$.each(b, function(key, value){
+						var td = $("<td></td>").html(value);
+						$(tr).append(td);
+					});
+					$("#tb").append(tr);
+				});
+			});
+		}//end function,함수가 끝나는곳
+		//위에서 만든 메소드 호출 
+		listBook();
+	});
+</script>
+</head>
+<body>
+	<table border="1" id="tb">
+		<tr>
+			<th>도서번호</th>
+			<th>도서이름</th>
+			<th>출판사명</th>
+			<th>도서가격</th>
+		</tr>
+	</table>
+	<br>
+	<form id="f">
+		도서번호 : <input type="text" id="bookid" name="bookid"><br>
+		도서이름 : <input type="text" id="bookname" name="bookname"><br>
+		출판사명 : <input type="text" id="publisher" name="publisher"><br>
+		도서가격 : <input type="text" id="price" name="price"><br>
+	</form>
+	<input type="button" value="등록" id="btnAdd">
+	<input type="button" value="수정" id="btnUpdate">
+	<input type="button" value="삭제" id="btnDelete">
+</body>
+</html>

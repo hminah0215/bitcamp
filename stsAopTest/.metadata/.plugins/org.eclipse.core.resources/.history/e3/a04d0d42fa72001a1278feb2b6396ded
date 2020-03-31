@@ -1,0 +1,22 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class GoodsController {
+	
+	@GetMapping("/insertGoods")
+	public String insertGoods() {
+		String str = "";
+		System.out.println("상품을 등록하였습니다");
+		return str;
+	}
+	
+	@GetMapping("/insertGoods")
+	public String insertGoods() {
+		String str = "";
+		System.out.println("상품을 등록하였습니다");
+		return str;
+	}
+}

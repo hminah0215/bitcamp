@@ -1,0 +1,45 @@
+package com.bit.listener;
+
+import java.sql.Date;
+
+import javax.servlet.ServletRequestEvent;
+import javax.servlet.ServletRequestListener;
+import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * Application Lifecycle Listener implementation class BitListener
+ *
+ */
+@WebListener
+public class BitListener implements ServletRequestListener {
+
+    /**
+     * Default constructor. 
+     */
+    public BitListener() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+     * @see ServletRequestListener#requestDestroyed(ServletRequestEvent)
+     */
+    public void requestDestroyed(ServletRequestEvent arg0)  { 
+         // TODO Auto-generated method stub
+    }
+
+	/**
+     * @see ServletRequestListener#requestInitialized(ServletRequestEvent)
+     */
+    public void requestInitialized(ServletRequestEvent arg0)  { 
+         // 요청한 uri
+    	String uri = ((HttpServletRequest)arg0.getServletRequest()).getRequestURI();
+    	String ip =  ((HttpServletRequest)arg0.getServletRequest()).getRemoteAddr();
+    	Date today = new Date()
+    	System.out.println("요청한 uri: " + uri);
+    	System.out.println("ip주소: " + ip);
+    	System.out.println("요청시간: " + today);
+    	
+    }
+	
+}

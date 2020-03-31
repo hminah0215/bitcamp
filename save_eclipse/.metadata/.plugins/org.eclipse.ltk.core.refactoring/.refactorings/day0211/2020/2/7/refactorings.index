@@ -1,0 +1,14 @@
+1581389233336	Move 2 resources to 'book'
+1581389499218	Move 2 resources to 'WebContent'
+1581389502711	Delete element
+1581389622880	Move 2 resources to 'book'
+1581390878046	Copy file
+1581490437535	Rename type 'deleteBookServlet'
+1581490444386	Rename type 'detailBoardServlet'
+1581490449818	Rename type 'insertBoardServlet'
+1581490456321	Rename type 'insertBookServlet'
+1581490462893	Rename type 'insertGoodsServlet'
+1581490469632	Rename type 'listBoardServlet'
+1581490475227	Rename type 'listGoodsServlet'
+1581490481565	Rename type 'updateBookServlet'
+1581491475604	Copy file

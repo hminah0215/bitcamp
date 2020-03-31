@@ -1,0 +1,8 @@
+package com.bit.dao;
+
+public class MemberDao {
+	public String insertMember() {
+		System.out.println("깃 충돌 테스트");
+		return "ok";
+	}
+}

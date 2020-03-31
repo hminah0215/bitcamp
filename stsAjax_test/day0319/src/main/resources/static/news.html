@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	li{
+		list-style: none;
+	}
+	
+	.high_light{background: aqua;}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var arr;
+		
+		$.ajax("itnews.do",{success:function(data){
+			arr = data;
+			$.each(data, function(idx, news){
+				var li = $("<li></li>").html( news.title ).attr("url",news.url);
+				$("#newsList").append(li);
+				
+				$(li).click(function(){
+					var url = $(this).attr("url");
+					location.href = url;
+				});
+				
+				$(li).hover(function(){
+					$(this).addClass("high_light");
+				},function(){
+					$(this).removeClass("high_light");
+				})
+			});
+
+		}});
+		
+	});
+		
+</script>
+</head>
+<body>
+	<h2>IT 뉴스</h2>
+	<hr>
+	<ul id="newsList"></ul>
+</body>
+</html>

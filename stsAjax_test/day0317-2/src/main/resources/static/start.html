@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn").click(function(){
+		
+		$.ajax("Hello.do",{success:function(data){
+			$("#msg").text("다시요청:"+data);
+		}, async:false});
+		
+		
+		
+	//	$.ajax({url:"Hello.do",success:function(data){
+	//		$("#msg").html(data);
+	//	}});
+		//$.ajax("url",{})
+	});
+})
+</script>
+</head>
+<body>
+	<textarea rows="10" cols="80"></textarea>
+	<br>
+	수신된 메세지:
+	<h2 id="msg"></h2>
+	<button id="btn">Ajax통신</button>
+</body>
+</html>
+
+
+
+

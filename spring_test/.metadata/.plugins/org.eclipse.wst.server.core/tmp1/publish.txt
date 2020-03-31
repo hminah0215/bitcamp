@@ -1,0 +1,7 @@
+#Tomcat publish data
+#Mon Mar 16 16:23:04 KST 2020
+org.eclipse.jst.jee.server\:/binary\:C\:\\_Study\\spring_test\\MyBatise_Test\\WebContent\\WEB-INF\\lib\\hanbTest.war=WEB-INF/lib/hanbTest.war
+org.eclipse.jst.jee.server\:/binary\:C\:\\_Study\\spring_test\\helloTest\\WebContent\\WEB-INF\\lib\\hanbTest.war=WEB-INF/lib/hanbTest.war
+org.eclipse.jst.jee.server\:/binary\:C\:\\_Study\\spring_test\\CustomerTest\\WebContent\\WEB-INF\\lib\\hanbTest.war=WEB-INF/lib/hanbTest.war
+org.eclipse.jst.jee.server\:/binary\:C\:\\_Study\\spring_test\\bitTest\\WebContent\\WEB-INF\\lib\\hanbTest.war=WEB-INF/lib/hanbTest.war
+org.eclipse.jst.jee.server\:/binary\:C\:\\_Study\\spring_test\\EmpTest\\WebContent\\WEB-INF\\lib\\hanbTest.war=WEB-INF/lib/hanbTest.war

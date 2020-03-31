@@ -1,0 +1,40 @@
+
+- jsp환경설정
+(어플리케이션 설정 복사해서 src /main /resource에 application.properties에 붙여넣기)
+
+-src의 main에 webapp폴더 -> WEB-INF폴더생성 -> views폴더 생성 
+
+-jsp 메이븐설정 복사
+pom.xml 에 디펜던시 맨 아래에 붙여넣기
+
+-src/main/java에있는 com.example.damo 패키지의 하위 패키지로 만들어야 오토스캔이 됨 
+(dao니 뭐니 그런것들!)
+===================================================================================================================
+
+페이징처리를 위한 쿼리  실험
+
+select no,item 
+	from goods order by no desc
+	
+
+select rownum n, no, item
+	from (select no,item 
+		from goods order by no desc)
+		
+select no, item 
+	from (select rownum n, no, item
+		from (select no,item 
+			from goods order by no desc))	
+where n between 5 and 8;
+		
+		
+select no, item, price, qty, fname, detail
+	from (select rownum n, no, item, price, qty, fname, detail
+		from (select *
+			from goods order by no desc))	
+where n between 5 and 8;		
+		
+		
+		
+		
+		

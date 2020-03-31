@@ -1,0 +1,67 @@
+package com.bit.member;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bit.dao.GoodsDAO;
+import com.bit.dao.MemberDAO;
+import com.bit.vo.GoodsVO;
+import com.bit.vo.MemberVO;
+import com.oreilly.servlet.MultipartRequest;
+
+/**
+ * Servlet implementation class insertMemberOK
+ */
+@WebServlet("/insertMemberOK.do")
+public class insertMemberOK extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public insertMemberOK() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		
+		MemberVO m = new MemberVO();
+		m.setId(request.getParameter("id"));
+		m.setPwd(request.getParameter("pwd"));
+		m.setName(request.getParameter("name"));
+		m.setTel(request.getParameter("tel"));
+		m.setBirth(request.getParameter("birth"));
+		m.setEmail(request.getParameter("email"));
+		m.setGender(request.getParameter("gender"));
+		m.setBlood(request.getParameter("blood"));
+		m.setHobby(request.getParameter("hobby"));
+		m.setUrl(request.getParameter("url"));
+		m.setJob(request.getParameter("job"));
+		m.setIntro(request.getParameter("intro"));
+		
+		MemberDAO dao = new MemberDAO();
+		int re = dao.insertMember(m);
+		
+	}
+
+}

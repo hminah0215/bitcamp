@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<!-- 페이징처리 -->
+	<select id="totalRecord" resultType="java.lang.Integer">
+		select count(*) from board
+	</select>
+
+	<!-- 조회수증가 -->
+	<update id="updateHit">
+		update board set hit = hit +1 where no = #{no}
+	</update>
+
+	<!-- 답글처리 -->
+	<update id="updateStep">
+		update board set b_step = b_step + 1 
+			where b_ref =  #{b_ref} and b_step > #{b_step}
+	</update>
+	
+	
+	<!-- 게시물 목록 -->
+	<select id="listAll" resultType="boardvo">
+		select no, title, writer, pwd, hit, 
+		         regdate, content, fname, ip, b_ref, b_step, b_level from (
+		         select rownum r, no, title, writer, pwd, hit, 
+		         regdate, content, fname, ip,  b_ref, b_step, b_level from (
+		            select * from board order by  b_ref desc, b_step ))
+		            where r between #{start} and #{end}
+
+	</select>
+
+	<!-- 새로운게시물을 위한 번호 -->
+	<select id = "nextNo" resultType="java.lang.Integer">
+		select nvl(max(no),0)+1 from board
+	</select>
+
+	<!-- 게시물 등록 -->
+	<insert id="insert">
+		insert into board values( #{no}, #{title}, #{writer}, #{pwd}, 0,
+		sysdate, #{content}, #{fname}, #{ip}, #{b_ref}, #{b_level} ,#{b_step} )
+	</insert>
+	
+	<!-- 게시물 상세보기 -->
+	<select id="detail" resultType="boardvo">
+		select * from board where no = #{no}
+	</select>
+	
+	<!-- 게시물 수정 -->
+	<update id="update">
+		update board set title=#{title}, content=#{content}, fname=#{fname} where no=#{no} and pwd=#{pwd}
+	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="delete">
+		delete board where no=#{no} and pwd=#{pwd}
+	</delete>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 접근할 이름 -->
+<mapper namespace="emp">
+
+<!-- result type에 애칭을 줄수있음, 쿼리끝 세미콜론 주의 -->
+
+	<!-- 관리자 목록 -->
+ <select id="managerList" resultType="empvo">
+  	 select * from emp where job!= '사원'
+ </select>
+  
+  <!-- 사원등록 -->
+  <insert id="insert">
+   	insert into emp values (seq_emp.nextval, #{ename}, #{job}, #{sal}, #{comm}, #{mgr}, sysdate, #{dno}, #{email}, #{jumin})
+  </insert>
+  
+  <!-- 사원목록 -->
+   <select id="selectAll" resultType="empVo">
+    select * from emp
+   </select>
+</mapper>

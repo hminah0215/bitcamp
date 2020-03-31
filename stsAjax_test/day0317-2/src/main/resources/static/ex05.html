@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+// 이파일을 복사하여 새로운 파일을 만들고 
+// xml응답방식을 요청하는 것으로 수정해 봅니다.
+$(function(){
+	$("#btn").click(function(){
+		$.ajax("listDeptXML.do",{success:function(data){
+			var arr = $(data).find("dept");
+			$.each(arr, function(idx,dept){
+				var dno = $(this).find("dno").text();
+				var dname = $(this).find("dname").text();
+				var dloc = $(this).find("dloc").text();
+				var p = $("<p></p>").html(dno + "/" + dname + "/" + dloc);
+				$("#deptList").append(p);
+			});
+		}});
+	});
+})
+</script>
+</head>
+<body>	
+	<div id="deptList"></div>
+	<button id="btn">부서목록 읽어오기</button>
+</body>
+</html>
+
+
+
+

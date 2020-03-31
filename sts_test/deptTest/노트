@@ -1,0 +1,32 @@
+STS 툴이 정확히 뭐하는 건지 모르겠어요!?
+
+Spring Tool suite
+(스프링 개발을 쉽게 하기 위한 도구)
+
+===> spring boot 
+	스프링개발을 위한 환경설정을 더 쉽게, 더 빠르게 할 수 있는 환경제공 
+========================================================================================================
+
+모든 사원의 목록을 출력하는 프로그램을 작성
+
+사원번호, 사원명, 부서명, 직급, 관리자명, 급여, 수당, 실수령액, 근무지, 입사일
+
+
+select e.eno, e.ename ename, dname, e.job, m.ename mname, e.sal, e.comm, e.sal+e.comm total, dloc, e.hiredate
+	from emp e, emp m, dept d 
+	where e.mgr = m.eno and d.dno = e.dno;
+
+
+create view EmpView as
+	select e.eno, e.ename ename, dname, e.job, m.ename mname, e.sal, e.comm, e.sal+e.comm total, dloc, e.hiredate
+	from emp e, emp m, dept d 
+	where e.mgr = m.eno and d.dno = e.dno;
+
+
+관리자명, 직책, 부서위치, 부서명으로 검색이 가능하도록 기능을 추가합니다.
+==================================================================================================================
+
+
+
+
+========================================================================================================

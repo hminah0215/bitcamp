@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn").click(function(){
+		$.ajax("people.xml",{success:function(data){
+			var arr = $(data).find("person");
+			$.each(arr, function(idx, item){
+				var name = $(this).find("name").text();
+				var gender = $(this).find("gender").text();
+				var part = $(this).find("part").text();
+				
+				var ul = $("<ul></ul>");
+				
+				$(ul).append( $("<li></li>").html(name));
+				$(ul).append( $("<li></li>").html(gender));
+				$(ul).append( $("<li></li>").html(part));
+				
+				$("#list").append(ul);
+			});
+		}});
+	});
+})
+</script>
+</head>
+<body>	
+	<div id="list"></div>
+	<button id="btn">xml 읽어오기</button>
+</body>
+</html>
+
+
+
+

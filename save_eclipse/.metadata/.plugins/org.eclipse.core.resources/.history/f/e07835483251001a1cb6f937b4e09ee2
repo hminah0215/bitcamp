@@ -1,0 +1,13 @@
+h2{
+	color: pink;
+	font-family: 궁서
+}
+
+#thead{
+	background: gray;
+}
+
+table{
+	background: #CEEFF2;
+	border: 2px solid fuchsia;
+}

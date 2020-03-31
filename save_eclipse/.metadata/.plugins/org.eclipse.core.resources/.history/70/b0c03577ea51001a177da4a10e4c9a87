@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	h2{
+		color: skyblue;
+	}	
+	
+	#best{
+		color: red;
+	}
+</style>
+</head>
+<body>
+	* 인터널방식, 인라인 방식  *
+	<h2 id="best">치킨</h2>
+	<h2>삼겹살</h2>
+	<h2>수박</h2>
+	<h2 style="color: orange">당근</h2>
+	<h2>복숭아</h2>
+	<h2>떡볶이</h2>
+	<h2>딸기</h2>
+</body>
+</html>

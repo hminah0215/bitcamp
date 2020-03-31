@@ -1,0 +1,20 @@
+package com.bit.exam01;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+
+public class ProfilingAdvice {
+	
+	public Object pro(ProceedingJoinPoint joinPoint) {
+		Object re = null;
+		try {
+			String methodName = joinPoint.getSignature().toShortString();
+			System.out.println(methodName+" 시작!");
+			re = joinPoint.proceed();
+			
+		}catch (Throwable e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return re;
+	}
+}

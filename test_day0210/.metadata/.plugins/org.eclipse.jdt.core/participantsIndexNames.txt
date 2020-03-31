@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+C:\_Study\test_day0210\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\925725732.index
+\day0210\src
+C:\_Study\test_day0210\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\440463959.index
+\day0210BIT\src
+C:\_Study\test_day0210\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2837671373.index
+\day0210BIT\src

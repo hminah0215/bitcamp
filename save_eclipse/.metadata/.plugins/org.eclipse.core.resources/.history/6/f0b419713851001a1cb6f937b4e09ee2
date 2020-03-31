@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	
+<!-- 좀더 구체화된 선택자가 우선순위가 높음. 그냥 h1이 두개면 나중에 한게 적용되지만 
+		header h1이라고 구체화 된 선택자가 있으면 그게 적용됨   -->	
+	header h1{
+		color: red;
+	}
+	
+	h1{
+		color: blue;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<h1>hello</h1>
+	</header>
+</body>
+</html>

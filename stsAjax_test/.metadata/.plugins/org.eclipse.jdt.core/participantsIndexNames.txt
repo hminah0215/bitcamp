@@ -1,0 +1,7 @@
+INDEX VERSION 1.131
+C:\_Study\stsAjax_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4000245635.index
+\customer\src\main\java
+C:\_Study\stsAjax_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1058659454.index
+\goods\src\main\java
+C:\_Study\stsAjax_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2276007490.index
+\exam\src\main\java

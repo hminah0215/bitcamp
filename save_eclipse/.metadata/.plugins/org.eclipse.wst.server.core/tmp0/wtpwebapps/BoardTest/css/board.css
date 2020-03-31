@@ -1,0 +1,24 @@
+h2{
+	color: pink;
+	font-family: 궁서
+}
+
+#thead{
+	background: gray;
+}
+
+table{
+	border-style: dotted;
+	height: 50px;
+	vertical-align: middle;
+}
+
+td{
+	text-align: center;
+}
+
+.title{
+	font-size: 15px;
+	color: #933CCC;
+	text-decoration: none;	<!-- a 태그에 링크 밑줄 없앨수있음 -->
+}

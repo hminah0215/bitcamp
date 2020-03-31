@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/jqgrid/css/ui.jqgrid.css">
+<link rel="stylesheet" href="/jquery-ui/jquery-ui.min.js">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/jqgrid/js/jquery.jqGrid.min.js"></script>
+<script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>
+</head>
+<body>
+	1. <img src="/img/ball1.jpg" width="50" height="50">
+	2. <img src="../img/ball1.jpg" width="50" height="50">
+</body>
+</html>

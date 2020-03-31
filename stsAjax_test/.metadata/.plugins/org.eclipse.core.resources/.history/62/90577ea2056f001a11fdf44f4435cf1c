@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,
+      maximum-scale=1.0,minium-scale=1.0,
+      user-scaleable=no"/>
+<link rel="shortcut icon" href="/img/icon.png"/>      
+<link rel="apple-touch-icon" href="/img/icon.png"/>
+      
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript">
+   $(function(){
+	   var arr;
+    	$.getJSON("/goodsList",function(data){
+    		arr = data;
+    		$.each(arr,function(idx, g){
+    			var a = $("<a></a>").attr("href","#detailPage");
+    		})
+    	})
+   });
+   
+</script>
+</head>
+<body>
+   <div data-role="page" id="homePage">
+      <div data-role="header"><h1>비트몰</h1></div>
+      <div data-role="content">
+         <a href="#listPage" data-role="button">상품목록</a>
+      </div>
+      <div data-role="footer" data-position="fixed">비트몰</div>
+   </div>
+   
+   <div data-role="page" id="listPage">
+      <div data-role="header"><h1>상품목록</h1></div>
+      <div data-role="content">
+      	<ul data-role="listview" id="list"></ul>
+      </div>
+      <div data-role="footer" data-position="fixed">비트몰</div>
+   </div>
+   
+   <div data-role="page" id="detailPage">
+      <div data-role="header"><h1>상품상세</h1></div>
+      <div data-role="content">
+      </div>
+      <div data-role="footer" data-position="fixed">비트몰</div>
+   </div>
+</body>
+</html>

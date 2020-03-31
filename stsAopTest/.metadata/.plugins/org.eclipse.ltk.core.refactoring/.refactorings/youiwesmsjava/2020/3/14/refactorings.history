@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;kr.co.youiwe.webservice&apos; to &apos;day0330/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;youiwesmsjava&apos;&#x0D;&#x0A;- Destination element: &apos;day0330/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;youiwesmsjava/src/kr.co.youiwe.webservice&apos;" description="Copy package" destination="=day0330/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" element1="/src&lt;kr.co.youiwe.webservice" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1585571655346" version="1.0"/>
+</session>

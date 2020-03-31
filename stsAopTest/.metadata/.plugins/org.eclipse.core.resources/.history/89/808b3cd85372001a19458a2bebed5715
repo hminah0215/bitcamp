@@ -1,0 +1,75 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.dao.EmpDao;
+import com.example.demo.vo.EmpVo;
+
+@Controller
+public class MailScheduleController {
+
+	@Autowired
+	private EmpDao dao;
+
+	public void setDao(EmpDao dao) {
+		this.dao = dao;
+	}
+
+	@Autowired
+	private JavaMailSender mailSender;
+
+	public void setJavaMailSender(JavaMailSender mailSender) {
+		this.mailSender = mailSender;
+	}
+	
+	// 콤마, 로 구분하는건 57분, 58분, 59분에도 동작하라고!  
+	//@Scheduled(cron=“초 분 시간 일 월 요일 연도")
+
+	@Scheduled(cron ="0 57,58,59 * * *")
+	public void pro() {
+		System.out.println("집에가고싶다!!!!!");
+	}
+	
+//	@Scheduled(fixedRate = 10000)
+//	public void pro() {
+//		System.out.println("집에가고싶다!!!!!");
+//	}
+	
+	
+//	@RequestMapping("/mail.do")
+//	@Scheduled(cron = "0 40, 12, 30, *  * ?")
+//	public void mail(EmpVo e) {
+//		List<EmpVo> list = dao.list();
+//
+//		for (EmpVo money : list) {
+//			System.out.println(money.getEname() + "님" + " 이번달 수령액은" + (money.getSal() + money.getComm()) + "입니다");
+//
+//			mailSender.send(new MimeMessagePreparator() {
+//				public void prepare(MimeMessage mimeMessage) throws MessagingException {
+//					MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+//					//message.setFrom("@gmail.com");
+//					//message.setTo(money.getEmail());
+//					//message.setTo("@gmail.com");
+//					//message.setSubject("월급여 기재 안해서 다시보냄! 이번달 월급!");
+//					//message.setText(money.getEname() + "님 이번달 월급은" + (money.getSal() + money.getComm()) + "입니다",true);
+//
+//				}
+//			});
+//		}
+//
+//	}
+}

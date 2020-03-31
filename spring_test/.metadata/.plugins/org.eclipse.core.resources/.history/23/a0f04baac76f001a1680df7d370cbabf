@@ -1,0 +1,8 @@
+package com.bit.dao;
+
+public class MemberDao {
+	
+	public int insertMember(String name, int age) {
+		System.out.println("회원을 등록하였습니다.");
+	}
+}

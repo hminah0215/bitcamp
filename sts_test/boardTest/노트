@@ -1,0 +1,42 @@
+답글처리
+
+b_ref		: 서로 관련글임을 그룹하기 위한 컬럼
+b_level		: 답글의 계층을 위한 컬럼
+b_step		: 서로 관련글일때 답글의 출력 순서를 위한 컬럼
+
+
+	1. 새글일때의 처리 
+		b_ref는 글번호 (no)와 동일하게 한다.
+		b_level, b_step은 0으로 설정한다.
+	
+	2. 답글일때의 처리
+		b_ref는 부모글의 b_ref와 동일하게 한다. 
+		이미 달려있는 답글들의 b_step을 1씩 증가시킨다. 
+		b_level과 b_step은 부모글의 b_level, b_step에 1증가한 값을 설정한다.
+		
+		
+=============================================================================
+		
+select no,title from board order by b_ref desc, b_step 
+		
+		
+select rownum n, no, title from	
+		select no,title from board order by b_ref desc, b_step 
+
+select no, title from (
+		select rownum n, no, title, writer, pwd, hit, regdate, content, fname, ip, b_ref, b_level, b_step  from	(
+			select * from board order by b_ref desc, b_step ))
+			where n between 2 and 4;
+
+	select no, title, writer, pwd,hit,regdate,content,ip,b_ref,b_level,b_step title from(
+		select rownum n, no, title, writer, pwd,hit,regdate,content,ip,b_ref,b_level,b_step from(
+		select * from board order by b_ref desc, b_step))
+		where n between #{start} and #{end}
+		
+		
+		
+		
+		
+		
+		
+		

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1.0,
+      maximum-scale=1.0,minium-scale=1.0,
+      user-scaleable=no"/>
+<link rel="shortcut icon" href="/img/icon.png"/>      
+<link rel="apple-touch-icon" href="/img/icon.png"/>
+      
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript">
+   $(function(){
+	   var arr;
+    	$.getJSON("/goodsList",function(data){
+    		arr = data;
+    		$.each(arr,function(idx, g){
+    			var li = $("<li></li>");
+    			var a = $("<a></a>").attr("href","#detailPage");
+    			var table =$("<table></table>");
+    			var tr = $("<tr></tr>");
+    			var td1 = $("<td style='padding-right:5px'></td>");
+    			var td2 = $("<td style='padding-left:5px'></td>").html(g.item);
+    			
+    			var img = $("<img/>").attr({"src":"/img/"+g.fname, "width":30, "height":50});
+    			$(td1).append(img);
+    			
+    			$(tr).append(td1,td2);
+    			$(table).append(tr);
+    			$(a).append(table);
+    			$(li).append(a);
+    			$("#list").append(li);
+    		})
+    	})
+   });
+   
+</script>
+</head>
+<body>
+   <div data-role="page" id="homePage">
+      <div data-role="header"><h1>비트몰</h1></div>
+      <div data-role="content">
+         <a href="#listPage" data-role="button">상품목록</a>
+      </div>
+      <div data-role="footer" data-position="fixed">비트몰</div>
+   </div>
+   
+   <div data-role="page" id="listPage">
+      <div data-role="header"><h1>상품목록</h1></div>
+      <div data-role="content">
+      	<ul data-role="listview" id="list"></ul>
+      </div>
+      <div data-role="footer" data-position="fixed">비트몰</div>
+   </div>
+   
+   <div data-role="page" id="detailPage">
+      <div data-role="header"><h1>상품상세</h1></div>
+      <div data-role="content">
+      	<ul data-role="listview">
+      		<li>
+      			<table>
+      				<tr>
+      					<td style="padding-right: 5px">
+      						<img id="img">
+      					</td>
+      					<td style="padding-right: 5px">
+      						<table>
+      							<tr style="padding: 5px">
+      								<td style="padding: 5px">상품번호:</td>
+      								<td id="no"></td>
+      							</tr>
+      							<tr style="padding: 5px">
+      								<td style="padding: 5px">상품명:</td>
+      								<td id="item"></td>
+      							</tr>
+      							<tr style="padding: 5px">
+      								<td style="padding: 5px">수량:</td>
+      								<td id="qty"></td>
+      							</tr>
+      							<tr style="padding: 5px">
+      								<td style="padding: 5px">가격:</td>
+      								<td id="price"></td>
+      							</tr>
+      							<tr style="padding: 5px">
+      								<td style="padding: 5px">상세설명:</td>
+      								<td id="detail"></td>
+      							</tr>
+      						</table>
+      					</td>
+      				</tr>
+      			</table>
+      		</li>
+      	</ul>
+      </div>
+      <div data-role="footer" data-position="fixed">비트몰</div>
+   </div>
+</body>
+</html>

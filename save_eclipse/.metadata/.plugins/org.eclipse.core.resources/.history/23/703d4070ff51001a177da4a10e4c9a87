@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.box{width: 100px; height: 100px; background: orange; display: inline-block;
+		float: right; margin: 10px;}
+</style>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="box"></div>
+	<h2>비트캠프</h2>
+	<div>
+	인도 한 영화제작자의 '기생충' 표절 주장에 대해 CJ엔터테인먼트 측이 "아는 바가 없다"는 입장을 밝혔다.
+	'기생충'의 투자 배급사인 CJ엔터테인먼트 관계자는 18일 일간스포츠에 "인도 제작사로부터 이와 관련한 어떠한 연락도 받지 않았다. 이번 이슈 또한 언론 매체를 통해 접했을 뿐"이라고 전했다.
+	</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+package com.bit.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bit.dao.GoodsDAO;
+import com.bit.vo.GoodsVO;
+
+/**
+ * Servlet implementation class ListGoodsServlet
+ */
+@WebServlet("/listGoods.do")
+public class ListGoodsServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ListGoodsServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<h2>상품목록</h2>");
+		
+		ArrayList<GoodsVO> list = new ArrayList<GoodsVO>();
+		GoodsDAO dao = new GoodsDAO();
+		list = dao.listAll();
+		
+		String str ="<html>";
+		
+		for(GoodsVO vo : list) {
+			vo.getNo();
+			vo.getItem();
+			vo.getPrice();
+			vo.getQty();
+			vo.getFname();
+			vo.getDetail();
+		}
+		str += "상품명 :";
+		str += "<%=item %><br>";
+	
+		out.close();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

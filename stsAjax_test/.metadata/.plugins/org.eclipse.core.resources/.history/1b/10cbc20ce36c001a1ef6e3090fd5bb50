@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.min.css">
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	body {
+		font: 62.5%;
+	}
+	
+	.item{
+		margin: 3px;
+		padding: 5px;
+	}
+	
+	.item > img{
+		width: 50px;
+		height: 50px;
+	}
+	
+	#wrap{
+		overflow: hidden;
+	}
+	
+	#wrap > div {
+		float: left;
+	}
+	
+	
+	#dock{
+		position: fixed;
+		min-height: 120px;
+		width: 100%;
+		bottom: 0px;
+		z-index: 1;
+	}
+	
+	#dock > div{
+		float: right;
+	}
+	
+	#afterLogin{
+		visibility: hidden;
+	}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("#btnLogOut").click(function(){
+		sessionStorage.removeItem("memberID");
+		$("#afterLogin").css("visibility", "hidden");
+		$("#beforeLogin").css("visibility", "visible");
+	});
+	
+	$("#btnLogin").click(function(){
+		var member = $("#loginForm").serialize();
+		$.ajax("login", {data:member, success:function(r){
+			if(r != "no"){
+				sessionStorage.setItem("memberID", r);
+				//alert("로그인 성공하였씁니다.");
+				$("#memberId").html(r);
+				$("#afterLogin").css("visibility", "visible");
+				$("#beforeLogin").css("visibility", "hidden");
+			}
+		}});
+	});
+	
+	$("#addCart").click(function(){
+		var memberId = sessionStorage.getItem("memberID");
+		console.log(memberId+"|"+memberId+"|");
+		if(memberId == null){
+			alert("로그인하세요");
+			return;
+		}
+		
+		var cartList = $("#dock > .item");
+		
+		var i=0;
+		$.each(cartList, function(idx, item){
+			var gno = $(item).attr("gno");
+			var qty = $(item).find(".qty").val();
+			var id = sessionStorage.getItem("memberID");
+			var g = {gno:gno,qty:qty,id:id};
+			$.ajax("insertCart",{data:g, success:function(r){
+				i++;
+				if(i == cartList.length){
+					alert("장바구니에 담았습니다.");
+				}
+			}});
+		});
+	});
+	
+	
+	$.getJSON("goodsList",function(arr){
+		$.each(arr, function(idx, g){			
+			var item  = $("<div class='ui-widget-content ui-corner-all item'></div>").attr("gno",g.no);
+			var img = $("<img/>").attr("src", "img/"+g.fname);
+			var name = $("<p></p>").html(g.item);
+			var price = $("<p></p>").html(g.price);
+			var qty = $("<input type='number' class='qty'/>").val(1);
+			$(qty).css("visibility","hidden");
+			$(item).append(img,name,price,qty);
+			$("#wrap").append(item);
+		});
+		
+		$("#wrap > div").draggable({
+			helper:"clone",
+			zIndex:100,
+			scroll:false
+		});
+		
+		$("#dock").droppable({
+			accept:"#wrap > div",
+			drop:function(event, ui){
+				$(ui.draggable).fadeOut(function(){
+					$(this).appendTo("#dock").fadeIn();
+					$(this).find(".qty").css("visibility","visible");
+				});
+			}
+		});
+		
+		$("body").droppable({
+			accept:"#dock > div",
+			drop:function(event, ui){
+				$(ui.draggable).fadeOut(function(){
+					 $(this).appendTo("#wrap").fadeIn();
+				});
+			}
+		});
+	});
+	
+})
+</script>
+</head>
+<body>
+	
+	<div id="beforeLogin">
+		<form id="loginForm">
+			아이디 : <input type="text" name="id">
+			암호 : <input type="password" name="pwd">
+		</form>
+		<button id="btnLogin">로그인</button>
+	</div>
+	
+	<div id="afterLogin">
+		<span id="memberId"></span>님로그인 하였습니다.		
+		<button id="btnLogOut">로그아웃</button>
+	</div>
+	
+		
+	<div id="wrap"></div>
+	<button id="addCart">담기</button>
+	<div id="dock" class="ui-state-error"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+

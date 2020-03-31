@@ -1,0 +1,19 @@
+h2{
+	color: pink;
+	font-family: 궁서
+}
+
+#thead{
+	background: gray;
+}
+
+table{
+	background: #CEEFF2;
+	border: 2px solid fuchsia;
+}
+
+.title{
+	font-size: 15px;
+	color: #A63247;
+	text-decoration: none;	<!-- a 태그에 링크 밑줄 없앨수있음 -->
+}

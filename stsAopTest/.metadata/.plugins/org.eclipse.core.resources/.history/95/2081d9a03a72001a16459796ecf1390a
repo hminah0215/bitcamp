@@ -1,0 +1,16 @@
+package com.example.demo.db;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+public class EmpManager {
+	
+	private SqlSessionFactory factory;
+	
+	static {
+		try {
+			
+		}catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}

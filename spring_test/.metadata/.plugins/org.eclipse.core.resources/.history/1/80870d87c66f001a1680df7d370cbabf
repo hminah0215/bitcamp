@@ -1,0 +1,11 @@
+package com.bit.exam01;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+
+public class ProfilingAdvice {
+	
+	public Object pro(ProceedingJoinPoint joinponint) {
+		Object re = null;
+		return re;
+	}
+}

@@ -1,0 +1,13 @@
+127.0.0.1 - - [15/Feb/2020:12:58:39 +0900] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:58:40 +0900] "GET /goodsTEST/start.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:58:41 +0900] "GET /goodsTEST/listGoods.do HTTP/1.1" 200 1374
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:58:41 +0900] "GET /goodsTEST/upload/cloth3.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:58:46 +0900] "GET /goodsTEST/detailGoods.do?no=1063 HTTP/1.1" 200 580
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:58:48 +0900] "GET /goodsTEST/updateGoods.do?no=1063 HTTP/1.1" 200 1015
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:59:07 +0900] "POST /goodsTEST/updateGoodsOK.do HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:59:07 +0900] "GET /goodsTEST/listGoods.do HTTP/1.1" 200 1374
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:59:10 +0900] "GET /goodsTEST/listGoods.do?pageNUM=2 HTTP/1.1" 200 1376
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:59:10 +0900] "GET /goodsTEST/listGoods.do?pageNUM=2 HTTP/1.1" 200 1376
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:59:12 +0900] "GET /goodsTEST/listGoods.do?pageNUM=3 HTTP/1.1" 200 1381
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:59:15 +0900] "GET /goodsTEST/listGoods.do?pageNUM=5 HTTP/1.1" 200 1196
+0:0:0:0:0:0:0:1 - - [15/Feb/2020:12:59:15 +0900] "GET /goodsTEST/upload/sjsj.jpg HTTP/1.1" 304 -

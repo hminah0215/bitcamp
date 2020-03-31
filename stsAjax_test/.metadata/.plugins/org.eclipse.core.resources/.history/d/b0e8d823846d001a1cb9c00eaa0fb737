@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+});
+</script>
+</head>
+<body>
+	<p>지금 내 생각을</p>
+	<h1>150</h1>
+	<textarea rows="5" cols="70"></textarea>
+</body>
+</html>

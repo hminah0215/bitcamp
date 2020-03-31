@@ -1,0 +1,11 @@
+h1{
+	color: red;
+}
+
+div{
+	width: 100px;
+	height: 100px;
+	background: orange;
+	display: inline-block;
+	border: 2px solid green;
+}

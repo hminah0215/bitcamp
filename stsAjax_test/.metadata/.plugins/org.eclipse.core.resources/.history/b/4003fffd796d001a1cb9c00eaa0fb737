@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>플리커 이미지 검색</h1>
+	<hr>
+	<form id="searchForm">
+		<input type="text" name="tags">
+		<input type="hidden" name="format" value="json">
+		<input type="submit" value="검색">
+	</form>
+	
+	<div id="images">
+	</div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#buy{
+	margin: 20px 10px;
+	font-weight: bold;
+	color : red;
+}
+
+#one,#four{
+	border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    margin: 20px 10px;
+}
+
+#one th{
+    padding: 10px;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #2955D9;
+    background: #F25C05;
+    color: white;
+}
+
+#one td{
+    width: 350px;
+   	padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+#two,#three,#four{
+	border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    margin: 20px 10px;
+}
+
+#two,#three,#four th{
+    padding: 10px;
+   	font-weight: bold;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #2955D9;
+    background: #F25C05;
+    color: black;
+}
+
+#two,#three,#four td{
+    width: 350px;
+   	padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var arr=[];
+		listMy();
+		
+		//네번째테이블
+		function listMy(){
+			$("#four").empty();
+			$("#four").html("<tr><th>보유주</th><th>보유수량</th><th>총가격</th><th>매도</th></tr>");
+			$.getJSON("listMy",function(data){
+				$.each(data, function(idx, my){
+					arr.push(my);
+					var td11 = $("<td></td>").html( my.s_name );
+					var td12 = $("<td></td>").html( my.s_qty );
+					var td13 = $("<td></td>").html( my.s_tot );
+					var td14 = $("<td></td>").html("매도").css("color","red");
+					var tr4 = $("<tr></tr>").append(td11,td12,td13,td14);
+					
+					$(td14).attr("idx", idx);
+					$("#four").append(tr4);
+					//매도를 누르면
+					$(td14).click(function(){
+						
+						var idx = $(this).attr("idx");
+						//var b = $(td11).html();
+						var b = arr[idx].s_name;
+						var h ={s_name:b};
+						$.ajax("delete",{data:h, success:function(){
+							listMy();
+							alert("매도누름");
+							location.reload(true);
+						}})
+						
+					})
+				})
+					
+			})
+		}
+		
+		//테이블1에 주식목록 보이기(데이터베이스에 주식 3개 넣어놈)	
+		$.ajax("listStock",{success:function(data){
+			//arr = data;
+			$.each(data, function(idx, stock){
+				var td1 = $("<td></td>").html( stock.s_name );
+				var td2 = $("<td></td>").html( stock.now_price );
+				var tr1 =  $("<tr></tr>").append(td1, td2);
+				$("#one").append(tr1);
+				
+				//주식종목명을 누르면
+				$(td1).click(function(){
+					$("#two").html("<tr><th>현재가</th><th>상한가</th><th>하한가</th><th>기능</th></tr>");
+					var td3 = $("<td></td>").html( stock.now_price ).css("background","white");
+					var td4 = $("<td></td>").html( stock.up_price ).css("background","white");
+					var td5 = $("<td></td>").html( stock.down_price ).css("background","white");
+					var td6 = $("<td></td>").html("매수").css({"color":"white","background":"red"});
+					var tr2 = $("<tr></tr>").append(td3, td4, td5,td6);
+					$("#two").append(tr2);
+					
+					$(td6).off("click");
+					
+					//매수를 누르면
+					$(td6).click(function(){
+						$("#three").html("<tr><th>종목</th><th>수량</th><th>단가</th><th>금액</th></tr>");
+						var td7 = $("<td></td>").html( stock.s_name ).css("background","white");	
+						var qty = $("<input type=number>");	
+						var td8 = $("<td></td>").append(qty).css("background","white");
+						var td9 = $("<td></td>").html( stock.now_price ).css("background","white");
+						var td10 =$("<td></td>").css("background","white");
+					
+						//수량 입력한곳에 keyup 이벤트를 걸어서 자동으로 금액이 계산됨!
+						$(qty).keyup(function(){
+							//alert(qty.val());
+							 $(td10).html(qty.val() * stock.now_price);	
+						})			
+
+						var tr3 = $("<tr></tr>").append(td7, td8, td9, td10);
+						$("#three").append(tr3);
+
+						
+						//매수 버튼을 누르면 구입
+						$("#buy").click(function(){		
+							var inmy = {s_name: $(td7).text() , s_qty:$(qty).val() , s_tot:$(td10).text() };
+							
+							//구입인지 업데이트인지 판별	
+							$.ajax("cntup",{data:inmy,success:function(r){
+								if(r <= 0){
+									$.ajax("insert",{data:inmy,success:function(){}});
+								}else{
+									$.ajax("update",{data:inmy,success:function(){}});	
+								}
+								$("#four").empty();
+								listMy();
+							}})
+						})//매수(구입)버튼 동작 끝
+						
+						
+					});
+					
+				});
+			});
+
+		}});
+	});
+	
+
+
+</script>
+</head>
+<body>
+	<h2>주식 거래 화면</h2>
+	<hr>
+	
+	<table id="one" border="2" width="70%">
+		<tr>
+			<th>종목명</th>
+			<th>현재가</th>
+		</tr>
+	</table>
+	<br>
+	
+	<table id="two" border="2" width="70%">
+		<tr>
+			<th>현재가</th>
+			<th>상한가</th>
+			<th>하한가</th>
+			<th>기능</th>
+		</tr>
+	</table>
+	<br>
+	<table id="three" border="2" width="70%">
+		<tr>
+			<th>종목</th>
+			<th>수량</th>
+			<th>단가</th>
+			<th>금액</th>
+		</tr>
+	</table>
+	<button id="buy">매수</button>
+	<table id="four" border="2" width="70%">	
+		<tr>
+			<th>보유주</th>
+			<th>보유수량</th>
+			<th>총가격</th>
+			<th>매도</th>
+		</tr>
+	</table>
+</body>
+</html>

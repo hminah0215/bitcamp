@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 마이바티스 사이트, Building SqlSessionFactory from XML 복붙후 나에게 맞게 수정 -->
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- value에 실제 드라이버 이름같은걸 적어도 되고, 프로퍼티스 파일을 만들어서 읽어오게 설정해도 됨 -->
+<properties resource="com/bit/db/bit.properties"/>
+
+     <!-- 애칭: CustomerMapper.xml 파일에서 사용할 애칭주기 -->
+	<typeAliases>
+		<typeAlias type="com.bit.vo.CustomerVo" alias="customervo"/>
+		<typeAlias type="com.bit.vo.BookVo" alias="bookvo"/>
+	</typeAliases>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+ 
+      <!-- value를 .properties파일에서 정한대로 바꾸기 -->
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${pwd}"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+	<!-- 만들 파일의 실제경로 적기 -->
+  <mappers>
+    <mapper resource="com/bit/db/CustomerMapper.xml"/>
+	 <mapper resource="com/bit/db/BookMapper.xml"/>
+	 <mapper resource="com/bit/db/OrdersMapper.xml"/>
+  </mappers>
+  
+
+</configuration>

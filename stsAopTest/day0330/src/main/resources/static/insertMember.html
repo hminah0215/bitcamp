@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+#joinForm, #checkAuth {
+	visibility: hidden;
+}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+
+		var result;//인증번호
+
+		//이메일인증 버튼
+		$("#btn_email").click(function() {
+			var data = {
+				in1 : $("#in1").val()
+			}
+			$.ajax("/email.do", {
+				data : data,
+				success : function(r) {
+					alert("인증번호 발송");
+					result = r;
+					$("#checkAuth").css("visibility", "visible");
+				}
+			})
+		});
+
+		//인증번호확인 버튼
+		$("#ebc2").click(function() {
+			var in2 = $("#in2").val();
+			var data = $("#f").serialize();
+			if (result == in2) {
+				alert("인증번호 확인성공");
+				$("#joinForm").css("visibility", "visible");
+				$("#sendAuth").css("visibility", "hidden");
+				$("#checkAuth").css("visibility", "hidden");
+
+				//회원가입하기 버튼
+				$("#btnAdd").click(function() {
+					$.ajax("/insert.do", {
+						data : data,
+						success : function(r) {
+							alert(r);
+						}
+					})
+				})
+
+			} else {
+				alert("인증번호를 확인하세요");
+			}
+		})
+
+		//핸드폰 인증
+		$("#btn_phone").click(function() {
+			alert("서버 폭주로인해 점검중인 서비스입니다")
+		})
+	})
+</script>
+</head>
+<body>
+	<h2>회원 가입</h2>
+	<hr>
+	<div id="joinForm">
+		<form id="f">
+			아이디 : <input type="text" id="id" name="id"><br> 암호 : <input
+				type="text" id="pwd" name="pwd"><br> 이름 : <input
+				type="text" id="name" name="name"><br> 전화번호 : <input
+				type="text" id="tel" name="tel"><br> 나이 : <input
+				type="text" id="age" name="age"><br> <br>
+		</form>
+		<button id="btnAdd">회원가입하기</button>
+	</div>
+	<br>
+
+	<div id="sendAuth">
+		이메일 주소 또는 휴대폰 번호를 입력하세요<br>
+		<form id="g">
+			<input type='text' id='in1' name='in1'>
+		</form>
+		인증방법 선택<br>
+		<button id="btn_email">이메일 인증</button>
+		<button id="btn_phone">핸드폰 인증</button>
+	</div>
+	<br>
+	<br>
+
+	<div id="checkAuth">
+		<form id="h">
+			<input type='text' id='in2' name='in2' value="인증번호 입력">
+		</form>
+		<button id='ebc2'>인증번호 확인</button>
+		<br>
+	</div>
+	<br>
+
+</body>
+</html>
+>
