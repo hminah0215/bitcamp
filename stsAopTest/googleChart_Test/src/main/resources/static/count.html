@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	//구글차트 API로딩 메소드
+	google.charts.load('current', {'packages' : [ 'corechart' ]});
+	
+	//로딩되면 차트 그리는 메소드인듯
+	google.charts.setOnLoadCallback(drawChart);
+
+	var list; //이친구는 전역변수 ! 통신하고서도 사용해야하니까!
+	$.ajax("count", {success : function(r) {	//구글차트 api에서 data란 변수를 쓰니까 r로했음 
+			list = r;
+		}
+	})
+	
+	 
+	function drawChart() {
+		
+		// 실 데이터를 가진 데이터테이블 객체를 반환하는 메소드
+		var data = new google.visualization.DataTable();
+		
+		// 뭐야 이건... 그냥 무시 
+		data.addColumn('string', 'Topping');
+		data.addColumn('number', 'Slices');
+		
+		//반복문 돌면서 dname,count를 구글차트 data에 넣어줌 
+		$.each(list, function(idx, item) {
+			data.addRows([ [ item.dname, item.count ],//여기에 들어가는 값이 뷰화면에 보여지는것! 
+			]); //반복문 수행시 item 은 하나의 vo같은것. 즉 0번째vo 1번째vo...등!
+		})
+
+		// 옵션객체준비, 여기서 title은 차트위에 제목처럼 뜨는것
+		var options = {
+			'title' : '부서별 사원 수(백분율)',
+			'width' : 400,
+			'height' : 300
+		};
+
+		// div 영역에 차트를 그릴수 있는 차트객체를 반환
+		var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+		// 데이터테이블과 옵션 객체를 전달하여 차트 그려줌!
+		chart.draw(data, options);
+	} 
+
+</script>
+<body>
+	<div id="chart_div"></div>
+</body>
+</html>

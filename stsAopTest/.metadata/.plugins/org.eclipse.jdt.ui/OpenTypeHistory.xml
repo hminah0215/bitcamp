@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+    <typeInfo handle="=Team1/C:\/Users\/hyeon\/.m2\/repository\/org\/springframework\/boot\/spring-boot-autoconfigure\/2.2.6.RELEASE\/spring-boot-autoconfigure-2.2.6.RELEASE.jar=/maven.pomderived=/true=/=/maven.pomderived=/true=/=/maven.groupId=/org.springframework.boot=/=/maven.artifactId=/spring-boot-autoconfigure=/=/maven.version=/2.2.6.RELEASE=/=/maven.scope=/compile=/&lt;org.springframework.boot.autoconfigure.security.servlet(UserDetailsServiceAutoConfiguration.class[UserDetailsServiceAutoConfiguration" modifiers="33" timestamp="1585280084894"/>
+</typeInfoHistroy>

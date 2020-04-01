@@ -6,6 +6,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value="Encrypt"/>
 		<list key="findhistory">
+			<item value="javaailSender"/>
 			<item value="encrypt"/>
 			<item value="kr.co.youiwe.webservice.ServiceSMSSoapProxy"/>
 		</list>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cnt">
+  <select id="selectCnt" resultType="cntvo">
+    select count(*) count, dname
+    from emp e, dept d
+    where e.dno = d.dno 
+  	group by dname
+	<!-- 왠지는 모르겠는데 count에 또 이름을 지정해줘야 오류가 안남
+	스프링은 name으로 값을 전달하는 기능이라 그렇다는데 안배운거라....  -->
+  </select>
+</mapper>
