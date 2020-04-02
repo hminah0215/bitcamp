@@ -116,12 +116,40 @@ Service가 뭐에요?
 	Dao			:DB에 엑세스
 **********
 
+===========================================================================================================
+	
+	**스프링 시큐리티가 제공하는 loginForm에는 다음과 같은 _csrf가 hidden으로 전달됩니다. 
+		---> 이값이 오지 않으면 잘못된 접근으로 처리되어 로그인을 시도 할 수 없어요.
+		
+			따라서 우리가 직접 loginForm을 만드려면 시스템이 생성한 _csrf값을 읽어와서 전달해줘야합니다.
+			
+			만약,jsp를 쓴다면 ${_csrf} 라고 설정하면 될텐데 
+				정적인 html 에서는 _csrf 값을 읽어올 수 없어요.
+				
+				jsp가 아닌 동적인 html을 위하여 tymeleaf를 사용합니다.
+	
+<input 
+	name="_csrf" type="hidden" 
+	value="4f9f4621-7179-43e6-9139-52942b32a5ac">
 
+---------------------------------------------------------------------------------------
 
+<< thymeleaf 설정 >>
 
+<application.properties>
+spring.thymeleaf.prefix=classpath:templates/
+spring.thymeleaf.check-template-location=true
+spring.thymeleaf.suffix=.html
+spring.thymeleaf.mode=HTML5
+spring.thymeleaf.cache=false
+spring.thymeleaf.order=0
 
-
-
+<pom.xml>
+<!--thymeleaf dependency설정  -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
 
 
 

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/" xmlns:sec="https://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>비트몰</h2>
+	<a sec:authorize="isAuthenticated()" th:href="@{/Logout}">로그아웃</a>
+	<!-- isAuthenticated() 인증이 되면 나타나요~ -->
+	<hr>
+	
+	<p th:text="${m.id}"></p>
+	<p th:text="${m.name}"></p>
+	<p th:text="${m.pwd}"></p>
+	<p th:text="${m.role}"></p>
+</body>
+</html>

@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +23,15 @@ public class SequrityConfig extends WebSecurityConfigurerAdapter {
 			//그 나머지 요청은 로그인만 하면 사용할 수 있어요! 
 			.anyRequest().authenticated();	
 		
-		http.formLogin();		//스프링 시큐리티가 제공하는 로그인폼을 사용하겠습니다.
+		//http.formLogin();		//스프링 시큐리티가 제공하는 로그인폼을 사용하겠습니다.
+		
+		//로그인 페이지를 사용자가 만들어 지정해보자 
+		http.formLogin().loginPage("/login").permitAll();
+		
+		//사용자 정의 loginPage를 지정하면 로그아웃 또한 제공하지 않아요.
+		//로그아웃을 위한 서비스명도 지정해줘야함
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).invalidateHttpSession(true);
+		
 		http.httpBasic();		//http 기본 프로토콜을 사용하겠습니다.
 	}
 	
