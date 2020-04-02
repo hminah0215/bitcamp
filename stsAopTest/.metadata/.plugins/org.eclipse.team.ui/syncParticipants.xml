@@ -10,7 +10,6 @@
 </mappings>
 </org.eclipse.team.ui.MODEL_PARTICIPANT_MAPPINGS>
 </org.eclipse.team.ui.MODEL_PARTICIPANT_SETTINGS>
-<gitSynchronizeData container="C:/_Study/stsAopTest/AOP_LogTest" dstRev="HEAD" inludeLocal="true" srcRev="HEAD"/>
 </data>
 </participant>
 </syncparticipants>

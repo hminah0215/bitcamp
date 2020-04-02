@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btnOK").click(function() {
+			var m = $("#f").serialize();
+			$.ajax("/all/insertMember", {data : m,success : function(r) {
+					alert(r);
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>회원가입</h2>
+	<form id="f">
+		아이디 : <input type="text" name="id"><br> 
+		암호 : <input type="text" name="pwd"><br> 
+		이름 : <input type="text" name="name"><br> 
+		<input type="hidden" name="role"value="USER">
+	</form>
+	<button id="btnOK">가입</button>
+</body>
+</html>
