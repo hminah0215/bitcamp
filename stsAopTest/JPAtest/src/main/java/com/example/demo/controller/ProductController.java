@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dao.CategoryDao;
 import com.example.demo.dao.ProductDao;
@@ -38,10 +40,16 @@ public class ProductController {
 		return "redirect:/list";
 	}
 	
-	@GetMapping("/list")
-	public void list(Model m) {
+	@RequestMapping("/list")		//만약 cid가 없으면 디폴트를 0으로 하겠다
+	public void list(Model m, @RequestParam(value = "cid", defaultValue = "0") int cid) {
+		if(cid != 0) {
+			m.addAttribute("list", cdao.getOne(cid).getProducts());
+		}else {
+			m.addAttribute("list", dao.findAll());
+		}
+		
 		m.addAttribute("title","비트 쇼핑몰 상품목록");
-		m.addAttribute("list",dao.findAll());
+		m.addAttribute("clist",cdao.findAll());
 	}
 	
 	@GetMapping("/delete")
@@ -53,6 +61,7 @@ public class ProductController {
 	@GetMapping("/edit")
 	public void edit(int id,Model m) {
 		m.addAttribute("p",dao.getOne(id));
+		m.addAttribute("clist",cdao.findAll());
 		
 	}
 

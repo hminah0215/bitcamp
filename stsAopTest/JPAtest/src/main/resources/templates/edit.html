@@ -10,6 +10,9 @@
 		상품번호 : <input type="text" name="id" th:value="${p.id}" ><br>
         상품이름 : <input type="text" name="name" th:value="${p.name}" ><br>
         상품가격 : <input type="text" name="price" th:value="${p.price}"><br>
+        상품구분: <select name="category.cid">	
+        			<option th:each="c : ${clist}" th:text="${c.type}" th:value="${c.cid}"></option>
+        		 </select>
         <input type="submit" value="수정">
 	</form>
 </body>

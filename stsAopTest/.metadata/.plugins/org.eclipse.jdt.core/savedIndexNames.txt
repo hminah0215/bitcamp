@@ -11,7 +11,6 @@ INDEX VERSION 1.131+C:\_Study\stsAopTest\.metadata\.plugins\org.eclipse.jdt.core
 3119379477.index
 562994533.index
 1733583052.index
-3142268654.index
 1394236728.index
 402049993.index
 4280772667.index
@@ -19,12 +18,10 @@ INDEX VERSION 1.131+C:\_Study\stsAopTest\.metadata\.plugins\org.eclipse.jdt.core
 2473470854.index
 3940668257.index
 1422657671.index
-205928981.index
 1710180879.index
 2584858072.index
 2350329430.index
 2845749824.index
-869651753.index
 2071585682.index
 3812025384.index
 3810764606.index
@@ -34,8 +31,6 @@ INDEX VERSION 1.131+C:\_Study\stsAopTest\.metadata\.plugins\org.eclipse.jdt.core
 1365124555.index
 1978732334.index
 3058524017.index
-1416618470.index
-2551362859.index
 730659235.index
 3279795154.index
 4289395998.index

@@ -7,6 +7,12 @@
 <body>
 	<h2 th:text="${title}"></h2>
 	<hr>
+	<form action="list" method="post">
+		상품구분: <select name="cid">
+		<option th:each="c : ${clist}" th:text="${c.type}" th:value="${c.cid}"></option>
+		</select> 
+		<input type="submit" value="검색">
+	</form>
 	<table border="1" width="80%">
 		<thead>
 			<tr>
@@ -22,8 +28,8 @@
 				<td th:text=${p.name}></td>
 				<td th:text=${p.price}></td>
 				<td>
-					<a th:href="@{/edit(id=${p.id})}">수정</a>
-					<a th:href="@{/delete(id=${p.id})}">삭제</a>
+				<a th:href="@{/edit(id=${p.id})}">수정</a> 
+				<a th:href="@{/delete(id=${p.id})}">삭제</a>
 				</td>
 			</tr>
 		</tbody>
