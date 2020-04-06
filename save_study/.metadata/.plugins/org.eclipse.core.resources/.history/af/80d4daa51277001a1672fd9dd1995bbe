@@ -1,0 +1,30 @@
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.example.demo.dao.DeptDao;
+import com.example.demo.vo.DeptVo;
+
+@Controller
+public class DpetController {
+	
+	@Autowired
+	private DeptDao dao;
+
+	public void setDao(DeptDao dao) {
+		this.dao = dao;
+	}
+	
+	@RequestMapping("/listDept.do")
+	public ModelAndView listDept() {
+		ModelAndView mav = new ModelAndView();
+		List<DeptVo> list = dao.listDept();
+		mav.addObject(list);
+		return mav;
+	}
+}

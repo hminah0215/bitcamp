@@ -21,11 +21,10 @@ public class BitSecurityApplication {
 	}
 	
 	public static void main(String[] args) {
-		//member100 db에 유저,관리자 한명씩 추가,추가된거 확인하면 주석처리
+		//member100 db에 매니저 추가,추가된거 확인하면 주석처리
 		//MemberManager.insertMember(new MemberVo
-		//			("tiger",PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("tiger"),"홍길동","USER"));
-		//MemberManager.insertMember(new MemberVo
-		//			("master",PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("1234"),"곽동길","ADMIN"));
+					//("manager",PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("1234"),"김동완","MANAGER"));
+		
 		
 		SpringApplication.run(BitSecurityApplication.class, args);
 	}

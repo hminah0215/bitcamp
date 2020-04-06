@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h2>상품목록</h2>
+	<a href="insertGoods.do">상품등록</a>
 	<hr>
 	<form action="listGoods.do">
 	

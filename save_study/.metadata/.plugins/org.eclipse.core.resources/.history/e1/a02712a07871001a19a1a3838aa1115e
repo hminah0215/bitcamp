@@ -1,8 +1,0 @@
-package com.example.demo.vo;
-
-public class CustomerVo {
-	private String id;
-	private String pwd;
-	private String name;
-	private String phone;
-}

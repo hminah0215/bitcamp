@@ -22,4 +22,12 @@
   <delete id="goodsDelete">
   	delete goods where no = #{no}
   </delete>
+  
+  <update id="goodsUpdate">
+  	update goods set item=#{item}, price=#{price}, qty=#{qty},  fname=#{fname}, detail =#{detail} where no=#{no}
+  </update>
+  
+  <insert id="goodsInsert">
+  	insert into goods values(#{no},#{item},#{price},#{qty},#{fname},#{detail})
+  </insert>
 </mapper>

@@ -25,6 +25,21 @@ public class GoodsManager {
 		}
 	}
 	
+	public static int updateGoods(GoodsVo g) {
+		SqlSession session = factory.openSession(true);
+		int re = session.update("goods.goodsUpdate",g);
+		session.close();
+		return re;
+	}
+	
+	public static int insertGoods(GoodsVo g) {
+		SqlSession session = factory.openSession(true);
+		int re = session.insert("goods.goodsInsert",g);
+		//session.commit();
+		session.close();
+		return re;
+	}
+	
 	public static int deleteGoods(int no) {
 		SqlSession session = factory.openSession(true);
 		int re = session.delete("goods.goodsDelete",no);

@@ -16,7 +16,7 @@ public class MemberController {
 	public void setMs(MemberService ms) {
 		this.ms = ms;
 	}
-
+	
 	@RequestMapping("/all/insertMember")
 	public String insertMember(MemberVo m) {
 		System.out.println("회원정보"+m);

@@ -11,6 +11,14 @@ import com.example.demo.vo.GoodsVo;
 @Repository
 public class GoodsDao {
 	
+	public int InsertGoods(GoodsVo g) {
+		return GoodsManager.insertGoods(g);
+	}
+	
+	public int UpdateGoods(GoodsVo g) {
+		return GoodsManager.updateGoods(g);
+	}
+	
 	public int deleteGoods(int no) {
 		return GoodsManager.deleteGoods(no);
 	}

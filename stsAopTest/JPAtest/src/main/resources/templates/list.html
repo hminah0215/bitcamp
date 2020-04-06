@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2 th:text="${title}"></h2>
+	<hr>
+	<table border="1" width="80%">
+		<thead>
+			<tr>
+				<th>상품번호</th>
+				<th>상품명</th>
+				<th>상품가격</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p : ${list}">
+				<td th:text=${p.id}></td>
+				<td th:text=${p.name}></td>
+				<td th:text=${p.price}></td>
+				<td>
+					<a th:href="@{/edit(id=${p.id})}">수정</a>
+					<a th:href="@{/delete(id=${p.id})}">삭제</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

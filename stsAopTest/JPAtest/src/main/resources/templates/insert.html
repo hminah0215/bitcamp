@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>상품등록</h2>
+	<form action="insert" method="post">
+		상품번호 : <input type="text" name="id" ><br>
+        상품이름 : <input type="text" name="name" ><br>
+        상품가격 : <input type="text" name="price"><br>
+        상품구분 :
+        	<select name="category.cid">	<!-- entity product 아랫부분과 동일해야함 -->
+        		<option th:each="c : ${clist}" th:text="${c.type}" th:value="${c.cid}"></option>
+        	</select>
+        <input type="submit" value="등록">
+	</form>
+</body>
+</html>

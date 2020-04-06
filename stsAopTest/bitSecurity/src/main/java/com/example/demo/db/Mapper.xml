@@ -7,6 +7,10 @@
   	select * from member100 where id=#{username}
   </select>
   
+  <select id="selectList" resultType="membervo">
+  	select * from member100
+  </select>
+  
   <insert id="insert">
   	insert into member100 values(#{id},#{pwd},#{name},#{role})
   </insert>

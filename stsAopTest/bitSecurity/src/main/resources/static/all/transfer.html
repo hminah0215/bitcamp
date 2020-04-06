@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnOK").click(function(){
+		var t = $("#f").serialize();
+		$.ajax("/all/transfer", {data:t, success:function(data){
+			alert(data);
+		}});
+	});
+});
+</script>
+</head>
+<body>
+	<h2>계좌이체</h2>
+	<form id="f">
+		돈 보내는 사람 : <input type="text" name="from"><br>
+		돈 받는 사람 : <input type="text" name="to"><br>
+		보낼 금액 : <input type="text" name="amount"><br>
+	</form>
+	<button id="btnOK">이체</button>
+</body>
+</html>

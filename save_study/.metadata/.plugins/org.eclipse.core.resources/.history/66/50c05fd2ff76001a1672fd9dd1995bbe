@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods">
+
+  <select id="login" resultType="customervo">
+  	select * from customer where id = #{id} and pwd = #{pwd}
+  </select>
+
+  <select id="goodsList" resultType="goodsvo">
+    select * from goods 
+    	<if test="search != '' and combo != ''" >
+    	where ${combo} like '%'||#{search}||'%'
+    	</if>  <!-- 검색 $는 컬럼명, #은 변수의 값!  콤보박스에 있는건 컬럼명이기때문에 $ --> 
+  </select>
+  
+  <select id="goodsDetail" resultType="goodsvo">
+  	select * from goods where no = #{no}
+  </select>
+  
+  <delete id="goodsDelete">
+  	delete goods where no = #{no}
+  </delete>
+  
+  <update id="goodsUpdate">
+  	update goods set item=#{item}, qty=#{qty}, price=#{price}, fname=#{fname}, detail =#{detail} where no=#{no}
+  </update>
+  
+  <insert id="goodsInsert">
+  	insert into goods values(#{no},#{item},#{qty},#{price},#{fname},#{detail})
+  </insert>
+</mapper>

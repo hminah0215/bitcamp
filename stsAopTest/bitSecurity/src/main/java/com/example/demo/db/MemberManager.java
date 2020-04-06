@@ -1,6 +1,7 @@
 package com.example.demo.db;
 
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -20,6 +21,15 @@ public class MemberManager {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	
+	
+	public static List<MemberVo> listMember(){
+		SqlSession session = factory.openSession();
+		List<MemberVo> list = session.selectList("m.selectList");
+		session.close();
+		return list;
 	}
 	
 	public static MemberVo selectMember(String username) {
